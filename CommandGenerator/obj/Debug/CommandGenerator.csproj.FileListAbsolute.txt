@@ -1,0 +1,15 @@
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.pdb
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.User.resources
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.Properties.Resources.resources
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.GenerateResource.cache
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CoreCompileInputs.cache
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.exe
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe.config
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.dll
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.xml
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.dll.config
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache

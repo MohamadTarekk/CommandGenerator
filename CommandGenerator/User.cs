@@ -174,7 +174,8 @@ namespace CommandGenerator
             int count = Convert.ToInt32(cmd.ExecuteScalar());
             if (count == 0)
                 return false;
-            MessageBox.Show("This username is already in use.", "Can not edit.");
+            if(username != oldUsername)
+                MessageBox.Show("This username is already in use.", "Can not edit.");
             return true;
         }
 

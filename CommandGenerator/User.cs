@@ -15,9 +15,9 @@ namespace CommandGenerator
     public partial class User : Form
     {
         // Global Variables
-        int row;
+        public static int row;
         private bool editFlag = false;
-        private string oldUsername, oldPassword;
+        public static string oldUsername, oldPassword;
 
         public User()
         {
@@ -56,7 +56,7 @@ namespace CommandGenerator
             adap.Fill(show);
             try
             {
-            usersGrid.DataSource = show;
+                usersGrid.DataSource = show;
             }
             catch(Exception ex)
             {
@@ -90,65 +90,8 @@ namespace CommandGenerator
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            usersGB.Hide();
-            addGB.Show();
-        }
-
-        public bool checkPnlAdd()
-        {
-            if (tbUsername.Text != "" && tbPassword.Text != "" && tbConfirmPassword.Text != ""
-                && tbPassword.Text == tbConfirmPassword.Text)
-                return true;
-            return false;
-        }
-
-        public void clearPnlAdd()
-        {
-            tbUsername.Clear();
-            tbPassword.Clear();
-            tbConfirmPassword.Clear();
-        }
-
-        private void btnCancelAdd_Click(object sender, EventArgs e)
-        {
-            clearPnlAdd();
-            usersGB.Show();
-            addGB.Hide();
-        }
-
-        private void btnPerformAdd_Click_1(object sender, EventArgs e)
-        {
-            string username = tbUsername.Text;
-            string password = Encrypt(tbPassword.Text);
-            if (checkPnlAdd())
-            {
-                SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
-                myconnection.Open();
-                string query = "select count(*) from usersTable where username='" + username + "';";
-                SQLiteCommand cmd = new SQLiteCommand(query, myconnection);
-                cmd.Parameters.Add(new SQLiteParameter("@username", username));
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-                if (count == 0)
-                {
-                    cmd.CommandText = "insert into usersTable(username, password) values(@username, @password)";
-                    cmd.Parameters.Add(new SQLiteParameter("@username", username));
-                    cmd.Parameters.Add(new SQLiteParameter("@password", password));
-                    cmd.ExecuteNonQuery();
-                    myconnection.Close();
-                    refreshUsers();
-                    clearPnlAdd();
-                    usersGB.Show();
-                    addGB.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("This username is already in use.", "Can not add");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please provide correct information.", "Warning");
-            }
+            AddingUserForm auf = new AddingUserForm(usersGrid);
+            auf.ShowDialog();
         }
 
         private void usersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -202,7 +145,7 @@ namespace CommandGenerator
         }
 
         //* Encryption and Decryption Functions
-        private string Encrypt(string clearText)
+        public static string Encrypt(string clearText)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
@@ -224,7 +167,13 @@ namespace CommandGenerator
             return clearText;
         }
 
-        private string Decrypt(string cipherText)
+        private void circularButton1_Click(object sender, EventArgs e)
+        {
+            AddingNetworkForm anf = new AddingNetworkForm();
+            anf.Show();
+        }
+
+        public static string Decrypt(string cipherText)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] cipherBytes = Convert.FromBase64String(cipherText);

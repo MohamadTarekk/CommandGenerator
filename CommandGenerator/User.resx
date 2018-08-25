@@ -22557,6 +22557,17 @@
         OPnfrTocDSDI8qMlmpIAQAgBRnTKlqyL5LjHV0ZhzeTXHzcWvHN5ang8+Luwr//Z
 </value>
   </data>
+  <data name="circularButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAFhJREFUSEvtk0EKwCAMBPP/b9V+K9XA3EqEajx1B3IIyuxlY6IUd7/HNNZ6HmCt
+        B78CcvD/OSB6jmOZ6Z2Mx4t/y4QD3XdwqEU5+BWQg/9cQHR8q+fijVkHcMMNDjkscJcAAAAASUVORK5C
+        YII=
+</value>
+  </data>
+  <metadata name="dataGridViewButtonColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAB9AAAALBCAYAAAAAijrgAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m

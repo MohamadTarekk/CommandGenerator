@@ -58,6 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddingNetworkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddingNetworkForm.Designer.cs">
+      <DependentUpon>AddingNetworkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddingUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddingUserForm.Designer.cs">
+      <DependentUpon>AddingUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CircularButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddingNetworkForm.resx">
+      <DependentUpon>AddingNetworkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddingUserForm.resx">
+      <DependentUpon>AddingUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User.resx">
       <DependentUpon>User.cs</DependentUpon>
     </EmbeddedResource>

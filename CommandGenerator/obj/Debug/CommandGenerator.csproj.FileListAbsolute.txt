@@ -14,3 +14,4 @@ D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\bin\De
 D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
 D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingUserForm.resources
 D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingNetworkForm.resources
+D:\Mahmoud\Programs\Visual Studio Repos\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache

@@ -214,7 +214,7 @@
             this.exitPnlAddUser.AutoSize = true;
             this.exitPnlAddUser.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitPnlAddUser.ForeColor = System.Drawing.Color.DimGray;
-            this.exitPnlAddUser.Location = new System.Drawing.Point(378, 1);
+            this.exitPnlAddUser.Location = new System.Drawing.Point(374, 1);
             this.exitPnlAddUser.Margin = new System.Windows.Forms.Padding(1);
             this.exitPnlAddUser.Name = "exitPnlAddUser";
             this.exitPnlAddUser.Size = new System.Drawing.Size(31, 37);

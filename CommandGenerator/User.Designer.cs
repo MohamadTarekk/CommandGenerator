@@ -49,6 +49,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
@@ -63,6 +68,8 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,10 +87,10 @@
             // Commands
             // 
             this.Commands.Controls.Add(this.pnlCommands);
-            this.Commands.Location = new System.Drawing.Point(4, 25);
+            this.Commands.Location = new System.Drawing.Point(4, 26);
             this.Commands.Name = "Commands";
             this.Commands.Padding = new System.Windows.Forms.Padding(3);
-            this.Commands.Size = new System.Drawing.Size(998, 692);
+            this.Commands.Size = new System.Drawing.Size(998, 691);
             this.Commands.TabIndex = 0;
             this.Commands.Text = "Commands";
             this.Commands.UseVisualStyleBackColor = true;
@@ -92,11 +99,15 @@
             // 
             this.pnlCommands.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCommands.BackgroundImage")));
             this.pnlCommands.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCommands.Controls.Add(this.groupBox2);
+            this.pnlCommands.Controls.Add(this.button2);
+            this.pnlCommands.Controls.Add(this.button1);
+            this.pnlCommands.Controls.Add(this.comboBox1);
             this.pnlCommands.Controls.Add(this.pictureBox2);
             this.pnlCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCommands.Location = new System.Drawing.Point(3, 3);
             this.pnlCommands.Name = "pnlCommands";
-            this.pnlCommands.Size = new System.Drawing.Size(992, 686);
+            this.pnlCommands.Size = new System.Drawing.Size(992, 685);
             this.pnlCommands.TabIndex = 0;
             // 
             // pictureBox2
@@ -203,10 +214,10 @@
             // ManageNetwork
             // 
             this.ManageNetwork.Controls.Add(this.pnlManageNetwork);
-            this.ManageNetwork.Location = new System.Drawing.Point(4, 25);
+            this.ManageNetwork.Location = new System.Drawing.Point(4, 26);
             this.ManageNetwork.Name = "ManageNetwork";
             this.ManageNetwork.Padding = new System.Windows.Forms.Padding(3);
-            this.ManageNetwork.Size = new System.Drawing.Size(998, 692);
+            this.ManageNetwork.Size = new System.Drawing.Size(998, 691);
             this.ManageNetwork.TabIndex = 2;
             this.ManageNetwork.Text = "Manage Network";
             this.ManageNetwork.UseVisualStyleBackColor = true;
@@ -220,7 +231,7 @@
             this.pnlManageNetwork.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlManageNetwork.Location = new System.Drawing.Point(3, 3);
             this.pnlManageNetwork.Name = "pnlManageNetwork";
-            this.pnlManageNetwork.Size = new System.Drawing.Size(992, 686);
+            this.pnlManageNetwork.Size = new System.Drawing.Size(992, 685);
             this.pnlManageNetwork.TabIndex = 0;
             // 
             // groupBox1
@@ -285,6 +296,56 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 19);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(655, 657);
+            this.dataGridView2.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(5, 266);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(318, 25);
+            this.comboBox1.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(248, 297);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(248, 326);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(326, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(661, 679);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -313,6 +374,8 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -337,6 +400,11 @@
         private CircularButton circularButton1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

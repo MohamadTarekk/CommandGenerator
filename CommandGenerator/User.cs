@@ -170,7 +170,7 @@ namespace CommandGenerator
         private void circularButton1_Click(object sender, EventArgs e)
         {
             AddingNetworkForm anf = new AddingNetworkForm();
-            anf.Show();
+            anf.ShowDialog();
         }
 
         public static string Decrypt(string cipherText)

@@ -61,3 +61,29 @@ C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\Comma
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.exe
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\CommandGenerator.exe.config
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\CommandGenerator.exe
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\CommandGenerator.pdb
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\Bunifu_UI_v1.52.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\ExcelDataReader.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\Renci.SshNet.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\System.Data.SQLite.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\ExcelDataReader.xml
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\ExcelDataReader.DataSet.xml
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\Renci.SshNet.xml
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\System.Data.SQLite.xml
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.AddingNetworkForm.resources
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.AddingUserForm.resources
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.main.resources
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.User.resources
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.Properties.Resources.resources
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.csproj.GenerateResource.cache
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.exe
+C:\Users\Mina Magdy\Source\Repos\cmd\CommandGenerator\obj\Debug\CommandGenerator.pdb

@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Data.SQLite;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CommandGenerator
 {
     class DataBaseReference
     {
-        SQLiteConnection myconn = new SQLiteConnection(@"Data Source = C:\Users\LENOVO\Desktop\Functions\Nokia.db"); //* Put Your Own Link
+        public static string[] s = { "\\bin" };
+        public static string database =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
+        public static string pathh =
+            "Data Source=" + Path.GetFullPath(database);
+        SQLiteConnection myconn = new SQLiteConnection(pathh); //* Put Your Own Link
         Queries q = new Queries();
         public bool CheckExistence(String Name)
         {

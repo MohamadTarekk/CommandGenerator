@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,7 +16,11 @@ namespace CommandGenerator
     {
         DataGridView usersGrid = new DataGridView();
         private bool usernameEntered;
-
+        public static string[] s = { "\\bin" };
+        public static string database =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
+        public static string pathh =
+            "Data Source=" + Path.GetFullPath(database);
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -78,7 +83,7 @@ namespace CommandGenerator
 
         private void refreshUsers()
         {
-            SQLiteConnection myconn = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+            SQLiteConnection myconn = new SQLiteConnection(pathh);
             myconn.Open();
             DataTable show = new DataTable();
             SQLiteDataAdapter adap = new SQLiteDataAdapter("Select * from usersTable", myconn);
@@ -101,7 +106,8 @@ namespace CommandGenerator
             string password = User.Encrypt(tbPassword.Text);
             if (checkPnlAddUser())
             {
-                SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+               
+        SQLiteConnection myconnection = new SQLiteConnection(pathh);
                 myconnection.Open();
                 string query = "select count(*) from usersTable where username='" + username + "';";
                 SQLiteCommand cmd = new SQLiteCommand(query, myconnection);

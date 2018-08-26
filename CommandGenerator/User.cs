@@ -15,8 +15,12 @@ namespace CommandGenerator
         public static int row;
         private bool editFlag = false;
         public static string oldUsername, oldPassword;
-        public string path = "Data Source=D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3";
 
+        public static string[] s = { "\\bin" };
+        public static string database =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
+        string path =
+            "Data Source=" + Path.GetFullPath(database);
         public User()
         {
             InitializeComponent();

@@ -49,11 +49,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cmdGrid = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SheetsCB = new System.Windows.Forms.ComboBox();
+            this.BrowzeBtn = new System.Windows.Forms.Button();
+            this.ExcuteBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
@@ -68,7 +68,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,10 +99,10 @@
             // 
             this.pnlCommands.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCommands.BackgroundImage")));
             this.pnlCommands.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCommands.Controls.Add(this.ExcuteBtn);
             this.pnlCommands.Controls.Add(this.groupBox2);
-            this.pnlCommands.Controls.Add(this.button2);
-            this.pnlCommands.Controls.Add(this.button1);
-            this.pnlCommands.Controls.Add(this.comboBox1);
+            this.pnlCommands.Controls.Add(this.BrowzeBtn);
+            this.pnlCommands.Controls.Add(this.SheetsCB);
             this.pnlCommands.Controls.Add(this.pictureBox2);
             this.pnlCommands.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCommands.Location = new System.Drawing.Point(3, 3);
@@ -296,55 +296,59 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // dataGridView2
+            // cmdGrid
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 19);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(655, 657);
-            this.dataGridView2.TabIndex = 6;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(5, 266);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(318, 25);
-            this.comboBox1.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(248, 297);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(248, 326);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cmdGrid.AllowUserToAddRows = false;
+            this.cmdGrid.AllowUserToDeleteRows = false;
+            this.cmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cmdGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmdGrid.Location = new System.Drawing.Point(3, 19);
+            this.cmdGrid.Name = "cmdGrid";
+            this.cmdGrid.ReadOnly = true;
+            this.cmdGrid.RowTemplate.Height = 24;
+            this.cmdGrid.Size = new System.Drawing.Size(655, 657);
+            this.cmdGrid.TabIndex = 6;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.cmdGrid);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(326, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(661, 679);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Commands Sheet";
+            // 
+            // SheetsCB
+            // 
+            this.SheetsCB.FormattingEnabled = true;
+            this.SheetsCB.Location = new System.Drawing.Point(27, 203);
+            this.SheetsCB.Name = "SheetsCB";
+            this.SheetsCB.Size = new System.Drawing.Size(275, 25);
+            this.SheetsCB.TabIndex = 7;
+            this.SheetsCB.SelectedIndexChanged += new System.EventHandler(this.SheetsCB_SelectedIndexChanged);
+            // 
+            // BrowzeBtn
+            // 
+            this.BrowzeBtn.Location = new System.Drawing.Point(27, 474);
+            this.BrowzeBtn.Name = "BrowzeBtn";
+            this.BrowzeBtn.Size = new System.Drawing.Size(115, 58);
+            this.BrowzeBtn.TabIndex = 8;
+            this.BrowzeBtn.Text = "Browze";
+            this.BrowzeBtn.UseVisualStyleBackColor = true;
+            this.BrowzeBtn.Click += new System.EventHandler(this.BrowzeBtn_Click);
+            // 
+            // ExcuteBtn
+            // 
+            this.ExcuteBtn.Location = new System.Drawing.Point(187, 474);
+            this.ExcuteBtn.Name = "ExcuteBtn";
+            this.ExcuteBtn.Size = new System.Drawing.Size(115, 58);
+            this.ExcuteBtn.TabIndex = 11;
+            this.ExcuteBtn.Text = "Excute";
+            this.ExcuteBtn.UseVisualStyleBackColor = true;
             // 
             // User
             // 
@@ -374,7 +378,7 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -400,11 +404,11 @@
         private CircularButton circularButton1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.Button ExcuteBtn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView cmdGrid;
+        private System.Windows.Forms.Button BrowzeBtn;
+        private System.Windows.Forms.ComboBox SheetsCB;
     }
 }
 

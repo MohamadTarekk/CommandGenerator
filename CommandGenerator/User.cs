@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
@@ -26,7 +23,7 @@ namespace CommandGenerator
 
         private void User_Load(object sender, EventArgs e)
         {
-            SQLiteConnection myconnection = new SQLiteConnection("Data Source=D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+            SQLiteConnection myconnection = new SQLiteConnection("Data Source=C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
             myconnection.Open();
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = myconnection;
@@ -49,7 +46,7 @@ namespace CommandGenerator
 
         private void refreshUsers()
         {
-            SQLiteConnection myconn = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+            SQLiteConnection myconn = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
             myconn.Open();
             DataTable show = new DataTable();
             SQLiteDataAdapter adap = new SQLiteDataAdapter("Select * from usersTable", myconn);
@@ -75,7 +72,7 @@ namespace CommandGenerator
                     string str = usersGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                     if (MessageBox.Show("Are you sure you want to delete user '" + str + "' ?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+                        SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
                         myconnection.Open();
                         SQLiteCommand cmd = new SQLiteCommand("delete from usersTable where username = @username;", myconnection);
                         cmd.Parameters.Add(new SQLiteParameter("@username", str));
@@ -109,7 +106,7 @@ namespace CommandGenerator
 
         private bool checkUsername(string username)
         {
-            SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+            SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
             myconnection.Open();
             string query = "select count(*) from usersTable where username='" + username + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, myconnection);
@@ -132,7 +129,7 @@ namespace CommandGenerator
             {
                 editFlag = false;
                 newPassword = Encrypt(newPassword);
-                SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
+                SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
                 myconnection.Open();
                 SQLiteCommand cmd = new SQLiteCommand("update usersTable set username = @username, password = @password where username = @oldUsername;", myconnection);
                 cmd.Parameters.Add(new SQLiteParameter("@username", newUsername));
@@ -194,5 +191,23 @@ namespace CommandGenerator
             }
             return cipherText;
         }
+
+        //////////--------------------Commands Tab--------------------\\\\\\\\\\
+
+        CommandsTabController commandsTabController = new CommandsTabController();
+
+        private void SheetsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmdGrid.DataSource = commandsTabController.GetSheet(SheetsCB.SelectedIndex);
+            cmdGrid.DefaultCellStyle.ForeColor = Color.Black;
+
+        }
+
+        private void BrowzeBtn_Click(object sender, EventArgs e)
+        {
+            cmdGrid.DataSource = null;
+            commandsTabController.BrowzeButtonClicked(SheetsCB);
+        }
+
     }
 }

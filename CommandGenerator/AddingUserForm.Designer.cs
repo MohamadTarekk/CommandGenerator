@@ -100,7 +100,7 @@
             // 
             // pnlTbConfirmPassword
             // 
-            this.pnlTbConfirmPassword.Location = new System.Drawing.Point(17, 325);
+            this.pnlTbConfirmPassword.Location = new System.Drawing.Point(15, 325);
             this.pnlTbConfirmPassword.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbConfirmPassword.Name = "pnlTbConfirmPassword";
             this.pnlTbConfirmPassword.Size = new System.Drawing.Size(5, 32);
@@ -108,7 +108,7 @@
             // 
             // pnlTbPassword
             // 
-            this.pnlTbPassword.Location = new System.Drawing.Point(17, 274);
+            this.pnlTbPassword.Location = new System.Drawing.Point(15, 274);
             this.pnlTbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbPassword.Name = "pnlTbPassword";
             this.pnlTbPassword.Size = new System.Drawing.Size(5, 32);
@@ -117,7 +117,7 @@
             // pnlTbUsername
             // 
             this.pnlTbUsername.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlTbUsername.Location = new System.Drawing.Point(17, 224);
+            this.pnlTbUsername.Location = new System.Drawing.Point(15, 224);
             this.pnlTbUsername.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbUsername.Name = "pnlTbUsername";
             this.pnlTbUsername.Size = new System.Drawing.Size(5, 32);

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -13,34 +14,53 @@ namespace CommandGenerator
     public partial class AddingUserForm : Form
     {
         DataGridView usersGrid = new DataGridView();
+        private bool usernameEntered;
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
 
         public AddingUserForm(DataGridView usersGrid)
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             this.usersGrid = usersGrid;
         }
 
-        public bool checkPnlAdd()
+        public bool checkPnlAddUser()
         {
             if (tbUsername.Text != "" && tbPassword.Text != "" && tbConfirmPassword.Text != ""
-                && tbPassword.Text == tbConfirmPassword.Text && tbPassword.UseSystemPasswordChar && tbConfirmPassword.UseSystemPasswordChar)
+                && tbPassword.Text == tbConfirmPassword.Text && usernameEntered
+                && tbPassword.UseSystemPasswordChar && tbConfirmPassword.UseSystemPasswordChar)
                 return true;
             return false;
         }
 
-        public void clearPnlAdd()
+        public void clearPnlAddUser()
         {
-            tbUsername.Clear();
-            tbPassword.Clear();
-            tbConfirmPassword.Clear();
+            tbUsername.Text = "Username";
+            tbPassword.Text = "Password";
+            tbConfirmPassword.Text = "Confirm Password";
+            usernameEntered = false;
+            tbPassword.UseSystemPasswordChar = false;
+            tbConfirmPassword.UseSystemPasswordChar = false;
         }
 
         private void tbUsername_Enter(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.FromArgb(26, 73, 148);
-            if (tbUsername.Text == "Username")
+            if (tbUsername.Text == "Username" && !usernameEntered)
             {
                 tbUsername.Text = "";
+                usernameEntered = true;
                 tbUsername.ForeColor = Color.FromArgb(26, 73, 148);
             }
         }
@@ -51,6 +71,7 @@ namespace CommandGenerator
             if (tbUsername.Text == "")
             {
                 tbUsername.Text = "Username";
+                usernameEntered = false;
                 tbUsername.ForeColor = Color.CornflowerBlue;
             }
         }
@@ -78,7 +99,7 @@ namespace CommandGenerator
         {
             string username = tbUsername.Text;
             string password = User.Encrypt(tbPassword.Text);
-            if (checkPnlAdd())
+            if (checkPnlAddUser())
             {
                 SQLiteConnection myconnection = new SQLiteConnection("Data Source = D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3");
                 myconnection.Open();
@@ -94,7 +115,7 @@ namespace CommandGenerator
                     cmd.ExecuteNonQuery();
                     myconnection.Close();
                     refreshUsers();
-                    clearPnlAdd();
+                    clearPnlAddUser();
                     this.Hide();
                 }
                 else
@@ -116,7 +137,7 @@ namespace CommandGenerator
         private void tbPassword_Enter(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.FromArgb(26, 73, 148);
-            if (tbPassword.Text == "Password")
+            if (tbPassword.Text == "Password" && !tbPassword.UseSystemPasswordChar)
             {
                 tbPassword.Text = "";
                 tbPassword.UseSystemPasswordChar = true;
@@ -138,7 +159,7 @@ namespace CommandGenerator
         private void tbConfirmPassword_Enter(object sender, EventArgs e)
         {
             pnlTbConfirmPassword.BackColor = Color.FromArgb(26, 73, 148);
-            if (tbConfirmPassword.Text == "Confirm Password")
+            if (tbConfirmPassword.Text == "Confirm Password" && !tbConfirmPassword.UseSystemPasswordChar)
             {
                 tbConfirmPassword.Text = "";
                 tbConfirmPassword.UseSystemPasswordChar = true;
@@ -159,7 +180,7 @@ namespace CommandGenerator
 
         private void exitPnlAddUser_Click(object sender, EventArgs e)
         {
-            clearPnlAdd();
+            clearPnlAddUser();
             this.Hide();
         }
 

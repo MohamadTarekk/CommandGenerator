@@ -15,6 +15,7 @@ namespace CommandGenerator
         public static int row;
         private bool editFlag = false;
         public static string oldUsername, oldPassword;
+        public string path = "Data Source=D:\\Mahmoud\\Programs\\SQLite\\databases\\testdb.db3;Version=3";
 
         public User()
         {
@@ -23,7 +24,7 @@ namespace CommandGenerator
 
         private void User_Load(object sender, EventArgs e)
         {
-            SQLiteConnection myconnection = new SQLiteConnection("Data Source=C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
+            SQLiteConnection myconnection = new SQLiteConnection(path);
             myconnection.Open();
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = myconnection;
@@ -46,7 +47,7 @@ namespace CommandGenerator
 
         private void refreshUsers()
         {
-            SQLiteConnection myconn = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
+            SQLiteConnection myconn = new SQLiteConnection(path);
             myconn.Open();
             DataTable show = new DataTable();
             SQLiteDataAdapter adap = new SQLiteDataAdapter("Select * from usersTable", myconn);
@@ -72,7 +73,7 @@ namespace CommandGenerator
                     string str = usersGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                     if (MessageBox.Show("Are you sure you want to delete user '" + str + "' ?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
+                        SQLiteConnection myconnection = new SQLiteConnection(path);
                         myconnection.Open();
                         SQLiteCommand cmd = new SQLiteCommand("delete from usersTable where username = @username;", myconnection);
                         cmd.Parameters.Add(new SQLiteParameter("@username", str));
@@ -89,6 +90,7 @@ namespace CommandGenerator
         {
             AddingUserForm auf = new AddingUserForm(usersGrid);
             auf.ShowDialog();
+            auf.Dispose();
         }
 
         private void usersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -106,7 +108,7 @@ namespace CommandGenerator
 
         private bool checkUsername(string username)
         {
-            SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
+            SQLiteConnection myconnection = new SQLiteConnection(path);
             myconnection.Open();
             string query = "select count(*) from usersTable where username='" + username + "';";
             SQLiteCommand cmd = new SQLiteCommand(query, myconnection);
@@ -129,7 +131,7 @@ namespace CommandGenerator
             {
                 editFlag = false;
                 newPassword = Encrypt(newPassword);
-                SQLiteConnection myconnection = new SQLiteConnection("Data Source = C:\\Users\\LENOVO\\Desktop\\sqlite-tools-win32-x86-3240000\\testdb.db;Version=3");
+                SQLiteConnection myconnection = new SQLiteConnection(path);
                 myconnection.Open();
                 SQLiteCommand cmd = new SQLiteCommand("update usersTable set username = @username, password = @password where username = @oldUsername;", myconnection);
                 cmd.Parameters.Add(new SQLiteParameter("@username", newUsername));
@@ -168,6 +170,7 @@ namespace CommandGenerator
         {
             AddingNetworkForm anf = new AddingNetworkForm();
             anf.ShowDialog();
+            anf.Dispose();
         }
 
         public static string Decrypt(string cipherText)

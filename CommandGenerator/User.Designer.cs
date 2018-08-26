@@ -54,6 +54,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
@@ -137,6 +138,8 @@
             this.cmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.cmdGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.cmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cmdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Refresh});
             this.cmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmdGrid.Location = new System.Drawing.Point(3, 19);
             this.cmdGrid.Name = "cmdGrid";
@@ -151,7 +154,7 @@
             this.BrowzeBtn.Name = "BrowzeBtn";
             this.BrowzeBtn.Size = new System.Drawing.Size(115, 58);
             this.BrowzeBtn.TabIndex = 8;
-            this.BrowzeBtn.Text = "Browze";
+            this.BrowzeBtn.Text = "Browse";
             this.BrowzeBtn.UseVisualStyleBackColor = true;
             this.BrowzeBtn.Click += new System.EventHandler(this.BrowzeBtn_Click);
             // 
@@ -352,6 +355,12 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
+            // Refresh
+            // 
+            this.Refresh.HeaderText = "Refresh";
+            this.Refresh.Name = "Refresh";
+            this.Refresh.ReadOnly = true;
+            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -411,6 +420,7 @@
         private System.Windows.Forms.DataGridView cmdGrid;
         private System.Windows.Forms.Button BrowzeBtn;
         private System.Windows.Forms.ComboBox SheetsCB;
+        private System.Windows.Forms.DataGridViewButtonColumn Refresh;
     }
 }
 

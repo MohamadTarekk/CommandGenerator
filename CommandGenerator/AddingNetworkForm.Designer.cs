@@ -92,7 +92,7 @@
             // 
             // pnlTbUsername
             // 
-            this.pnlTbUsername.Location = new System.Drawing.Point(17, 325);
+            this.pnlTbUsername.Location = new System.Drawing.Point(15, 325);
             this.pnlTbUsername.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbUsername.Name = "pnlTbUsername";
             this.pnlTbUsername.Size = new System.Drawing.Size(5, 32);
@@ -100,7 +100,7 @@
             // 
             // pnlTbNetwork
             // 
-            this.pnlTbNetwork.Location = new System.Drawing.Point(17, 274);
+            this.pnlTbNetwork.Location = new System.Drawing.Point(15, 274);
             this.pnlTbNetwork.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbNetwork.Name = "pnlTbNetwork";
             this.pnlTbNetwork.Size = new System.Drawing.Size(5, 32);
@@ -109,7 +109,7 @@
             // pnlTbIP
             // 
             this.pnlTbIP.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlTbIP.Location = new System.Drawing.Point(17, 224);
+            this.pnlTbIP.Location = new System.Drawing.Point(15, 224);
             this.pnlTbIP.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbIP.Name = "pnlTbIP";
             this.pnlTbIP.Size = new System.Drawing.Size(5, 32);
@@ -124,7 +124,7 @@
             this.btnPerformAdd.Location = new System.Drawing.Point(22, 479);
             this.btnPerformAdd.Name = "btnPerformAdd";
             this.btnPerformAdd.Size = new System.Drawing.Size(363, 34);
-            this.btnPerformAdd.TabIndex = 4;
+            this.btnPerformAdd.TabIndex = 5;
             this.btnPerformAdd.Text = "Add";
             this.btnPerformAdd.UseVisualStyleBackColor = false;
             this.btnPerformAdd.Click += new System.EventHandler(this.btnPerformAdd_Click);
@@ -250,7 +250,7 @@
             // 
             // pnlTbPassword
             // 
-            this.pnlTbPassword.Location = new System.Drawing.Point(17, 375);
+            this.pnlTbPassword.Location = new System.Drawing.Point(15, 375);
             this.pnlTbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.pnlTbPassword.Name = "pnlTbPassword";
             this.pnlTbPassword.Size = new System.Drawing.Size(5, 32);
@@ -275,7 +275,7 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(325, 32);
-            this.tbPassword.TabIndex = 17;
+            this.tbPassword.TabIndex = 4;
             this.tbPassword.Text = "Password";
             this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
             this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);

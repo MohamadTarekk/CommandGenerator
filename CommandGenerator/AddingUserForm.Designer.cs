@@ -30,8 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddingUserForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlMoveable = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.exitPnlAddUser = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTbConfirmPassword = new System.Windows.Forms.Panel();
             this.pnlTbPassword = new System.Windows.Forms.Panel();
             this.pnlTbUsername = new System.Windows.Forms.Panel();
@@ -42,7 +45,6 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
-            this.exitPnlAddUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -59,12 +61,23 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.pnlMoveable);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(299, 551);
             this.panel1.TabIndex = 0;
+            // 
+            // pnlMoveable
+            // 
+            this.pnlMoveable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMoveable.Location = new System.Drawing.Point(0, 0);
+            this.pnlMoveable.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlMoveable.Name = "pnlMoveable";
+            this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
+            this.pnlMoveable.TabIndex = 6;
+            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
             // 
             // pictureBox1
             // 
@@ -80,6 +93,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.exitPnlAddUser);
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.pnlTbConfirmPassword);
             this.panel2.Controls.Add(this.pnlTbPassword);
             this.panel2.Controls.Add(this.pnlTbUsername);
@@ -90,13 +105,37 @@
             this.panel2.Controls.Add(this.tbPassword);
             this.panel2.Controls.Add(this.pictureBox4);
             this.panel2.Controls.Add(this.tbUsername);
-            this.panel2.Controls.Add(this.exitPnlAddUser);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(300, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(410, 551);
             this.panel2.TabIndex = 1;
+            // 
+            // exitPnlAddUser
+            // 
+            this.exitPnlAddUser.AutoSize = true;
+            this.exitPnlAddUser.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitPnlAddUser.ForeColor = System.Drawing.Color.DimGray;
+            this.exitPnlAddUser.Location = new System.Drawing.Point(378, 1);
+            this.exitPnlAddUser.Margin = new System.Windows.Forms.Padding(1);
+            this.exitPnlAddUser.Name = "exitPnlAddUser";
+            this.exitPnlAddUser.Size = new System.Drawing.Size(31, 37);
+            this.exitPnlAddUser.TabIndex = 0;
+            this.exitPnlAddUser.Text = "x";
+            this.exitPnlAddUser.Click += new System.EventHandler(this.exitPnlAddUser_Click);
+            this.exitPnlAddUser.MouseLeave += new System.EventHandler(this.exitPnlAddUser_MouseLeave);
+            this.exitPnlAddUser.MouseHover += new System.EventHandler(this.exitPnlAddUser_MouseHover);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
             // 
             // pnlTbConfirmPassword
             // 
@@ -209,21 +248,6 @@
             this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
             this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
-            // exitPnlAddUser
-            // 
-            this.exitPnlAddUser.AutoSize = true;
-            this.exitPnlAddUser.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitPnlAddUser.ForeColor = System.Drawing.Color.DimGray;
-            this.exitPnlAddUser.Location = new System.Drawing.Point(374, 1);
-            this.exitPnlAddUser.Margin = new System.Windows.Forms.Padding(1);
-            this.exitPnlAddUser.Name = "exitPnlAddUser";
-            this.exitPnlAddUser.Size = new System.Drawing.Size(31, 37);
-            this.exitPnlAddUser.TabIndex = 0;
-            this.exitPnlAddUser.Text = "x";
-            this.exitPnlAddUser.Click += new System.EventHandler(this.exitPnlAddUser_Click);
-            this.exitPnlAddUser.MouseLeave += new System.EventHandler(this.exitPnlAddUser_MouseLeave);
-            this.exitPnlAddUser.MouseHover += new System.EventHandler(this.exitPnlAddUser_MouseHover);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -323,5 +347,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label exitPnlAddUser;
+        private System.Windows.Forms.Panel pnlMoveable;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

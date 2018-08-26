@@ -52,7 +52,6 @@ C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Excel
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Renci.SshNet.xml
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.xml
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.dll.config
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingNetworkForm.resources
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingUserForm.resources
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.User.resources

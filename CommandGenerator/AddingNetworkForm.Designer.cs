@@ -51,6 +51,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlMoveable = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -227,6 +229,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.exitPnlAddNetwork);
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.pnlTbPassword);
             this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.pnlTbUsername);
@@ -240,7 +244,6 @@
             this.panel2.Controls.Add(this.tbNetwork);
             this.panel2.Controls.Add(this.pictureBox4);
             this.panel2.Controls.Add(this.tbIP);
-            this.panel2.Controls.Add(this.exitPnlAddNetwork);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(300, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
@@ -305,12 +308,31 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.pnlMoveable);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(299, 551);
             this.panel1.TabIndex = 6;
+            // 
+            // pnlMoveable
+            // 
+            this.pnlMoveable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMoveable.Location = new System.Drawing.Point(0, 0);
+            this.pnlMoveable.Name = "pnlMoveable";
+            this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
+            this.pnlMoveable.TabIndex = 6;
+            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
+            this.flowLayoutPanel1.TabIndex = 20;
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
             // 
             // AddingNetworkForm
             // 
@@ -364,5 +386,7 @@
         private System.Windows.Forms.Panel pnlTbPassword;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel pnlMoveable;
     }
 }

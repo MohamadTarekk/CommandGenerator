@@ -34,6 +34,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Commands = new System.Windows.Forms.TabPage();
             this.pnlCommands = new System.Windows.Forms.Panel();
+            this.ExcuteBtn = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdGrid = new System.Windows.Forms.DataGridView();
+            this.BrowzeBtn = new System.Windows.Forms.Button();
+            this.SheetsCB = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ManageUsers = new System.Windows.Forms.TabPage();
             this.pnlManageUsers = new System.Windows.Forms.Panel();
@@ -49,14 +54,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.cmdGrid = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.SheetsCB = new System.Windows.Forms.ComboBox();
-            this.BrowzeBtn = new System.Windows.Forms.Button();
-            this.ExcuteBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ManageUsers.SuspendLayout();
             this.pnlManageUsers.SuspendLayout();
@@ -68,8 +70,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,6 +109,60 @@
             this.pnlCommands.Name = "pnlCommands";
             this.pnlCommands.Size = new System.Drawing.Size(992, 685);
             this.pnlCommands.TabIndex = 0;
+            // 
+            // ExcuteBtn
+            // 
+            this.ExcuteBtn.Location = new System.Drawing.Point(187, 474);
+            this.ExcuteBtn.Name = "ExcuteBtn";
+            this.ExcuteBtn.Size = new System.Drawing.Size(115, 58);
+            this.ExcuteBtn.TabIndex = 11;
+            this.ExcuteBtn.Text = "Excute";
+            this.ExcuteBtn.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cmdGrid);
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(326, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(661, 679);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Commands Sheet";
+            // 
+            // cmdGrid
+            // 
+            this.cmdGrid.AllowUserToAddRows = false;
+            this.cmdGrid.AllowUserToDeleteRows = false;
+            this.cmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cmdGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.cmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmdGrid.Location = new System.Drawing.Point(3, 19);
+            this.cmdGrid.Name = "cmdGrid";
+            this.cmdGrid.ReadOnly = true;
+            this.cmdGrid.RowTemplate.Height = 24;
+            this.cmdGrid.Size = new System.Drawing.Size(655, 657);
+            this.cmdGrid.TabIndex = 6;
+            // 
+            // BrowzeBtn
+            // 
+            this.BrowzeBtn.Location = new System.Drawing.Point(27, 474);
+            this.BrowzeBtn.Name = "BrowzeBtn";
+            this.BrowzeBtn.Size = new System.Drawing.Size(115, 58);
+            this.BrowzeBtn.TabIndex = 8;
+            this.BrowzeBtn.Text = "Browze";
+            this.BrowzeBtn.UseVisualStyleBackColor = true;
+            this.BrowzeBtn.Click += new System.EventHandler(this.BrowzeBtn_Click);
+            // 
+            // SheetsCB
+            // 
+            this.SheetsCB.FormattingEnabled = true;
+            this.SheetsCB.Location = new System.Drawing.Point(27, 203);
+            this.SheetsCB.Name = "SheetsCB";
+            this.SheetsCB.Size = new System.Drawing.Size(275, 25);
+            this.SheetsCB.TabIndex = 7;
+            this.SheetsCB.SelectedIndexChanged += new System.EventHandler(this.SheetsCB_SelectedIndexChanged);
             // 
             // pictureBox2
             // 
@@ -191,6 +245,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.usersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.usersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.usersGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.usersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Remove});
@@ -267,6 +322,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewButtonColumn1});
@@ -296,60 +352,6 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // cmdGrid
-            // 
-            this.cmdGrid.AllowUserToAddRows = false;
-            this.cmdGrid.AllowUserToDeleteRows = false;
-            this.cmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.cmdGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmdGrid.Location = new System.Drawing.Point(3, 19);
-            this.cmdGrid.Name = "cmdGrid";
-            this.cmdGrid.ReadOnly = true;
-            this.cmdGrid.RowTemplate.Height = 24;
-            this.cmdGrid.Size = new System.Drawing.Size(655, 657);
-            this.cmdGrid.TabIndex = 6;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cmdGrid);
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(326, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(661, 679);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Commands Sheet";
-            // 
-            // SheetsCB
-            // 
-            this.SheetsCB.FormattingEnabled = true;
-            this.SheetsCB.Location = new System.Drawing.Point(27, 203);
-            this.SheetsCB.Name = "SheetsCB";
-            this.SheetsCB.Size = new System.Drawing.Size(275, 25);
-            this.SheetsCB.TabIndex = 7;
-            this.SheetsCB.SelectedIndexChanged += new System.EventHandler(this.SheetsCB_SelectedIndexChanged);
-            // 
-            // BrowzeBtn
-            // 
-            this.BrowzeBtn.Location = new System.Drawing.Point(27, 474);
-            this.BrowzeBtn.Name = "BrowzeBtn";
-            this.BrowzeBtn.Size = new System.Drawing.Size(115, 58);
-            this.BrowzeBtn.TabIndex = 8;
-            this.BrowzeBtn.Text = "Browze";
-            this.BrowzeBtn.UseVisualStyleBackColor = true;
-            this.BrowzeBtn.Click += new System.EventHandler(this.BrowzeBtn_Click);
-            // 
-            // ExcuteBtn
-            // 
-            this.ExcuteBtn.Location = new System.Drawing.Point(187, 474);
-            this.ExcuteBtn.Name = "ExcuteBtn";
-            this.ExcuteBtn.Size = new System.Drawing.Size(115, 58);
-            this.ExcuteBtn.TabIndex = 11;
-            this.ExcuteBtn.Text = "Excute";
-            this.ExcuteBtn.UseVisualStyleBackColor = true;
-            // 
             // User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -367,6 +369,8 @@
             this.tabControl1.ResumeLayout(false);
             this.Commands.ResumeLayout(false);
             this.pnlCommands.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ManageUsers.ResumeLayout(false);
             this.pnlManageUsers.ResumeLayout(false);
@@ -378,8 +382,6 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).EndInit();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

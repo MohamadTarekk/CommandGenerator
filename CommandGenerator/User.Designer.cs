@@ -44,13 +44,13 @@
             this.pnlManageUsers = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usersGB = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new CommandGenerator.CircularButton();
+            this.btnAdd = new global::CommandGenerator.CircularButton();
             this.usersGrid = new System.Windows.Forms.DataGridView();
             this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ManageNetwork = new System.Windows.Forms.TabPage();
             this.pnlManageNetwork = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.circularButton1 = new CommandGenerator.CircularButton();
+            this.circularButton1 = new global::CommandGenerator.CircularButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();

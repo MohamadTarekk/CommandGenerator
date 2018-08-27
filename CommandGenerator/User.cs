@@ -32,7 +32,7 @@ namespace CommandGenerator
             myconnection.Open();
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = myconnection;
-            cmd.CommandText = "Select * from Users";
+            cmd.CommandText = "Select * from usersTable";
             using (SQLiteDataReader sdr = cmd.ExecuteReader())
             {
                 DataTable dt = new DataTable();
@@ -64,6 +64,7 @@ namespace CommandGenerator
             {
                 usersGrid.Rows[row].Cells[2].Value = oldUsername;
                 usersGrid.Rows[row].Cells[3].Value =Encrypt(oldPassword);
+                Console.WriteLine(ex.Message);
             }
             myconn.Close();
         }
@@ -86,7 +87,7 @@ namespace CommandGenerator
                         refreshUsers();
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
             }
         }
 

@@ -6,7 +6,7 @@ namespace CommandGenerator
     {
         public String ShowUsers()
         {
-            return "select * from Users";
+            return "select * from usersTable";
         }
         public String ShowNetworks()
         {
@@ -15,7 +15,7 @@ namespace CommandGenerator
         public String AddUser(String Username, String Password, Boolean Is_Admin)
         {
 
-            return "Insert Into Users(Username,Password,Is_Admin) Values('" + Username + "','" + Password + "','" + Is_Admin + "')";
+            return "Insert Into usersTable(Username,Password,Is_Admin) Values('" + Username + "','" + Password + "','" + Is_Admin + "')";
 
 
         }
@@ -26,15 +26,15 @@ namespace CommandGenerator
 
         public String DeleteUser(String Username)
         {
-            return "Delete From User Where Username='" + Username + "'";
+            return "Delete From usersTable Where Username='" + Username + "'";
         }
         public String DeleteNetwork(String Name)
         {
-            return "Delete From User Where Name='" + Name + "'";
+            return "Delete From usersTable Where Name='" + Name + "'";
         }
         public String Login(String Username, String Password)
         {
-            return "Select count(*)  from Users Where Username = '" + Username + "' and Password = '" + Password + "' ";
+            return "Select count(*)  from usersTable Where Username = '" + Username + "' and Password = '" + Password + "' ";
         }
         public String SearchNetwork(String Name)
         {

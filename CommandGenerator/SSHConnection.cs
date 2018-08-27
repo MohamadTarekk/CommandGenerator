@@ -5,12 +5,8 @@ namespace CommandGenerator
 {
     class SSHConnection
     {
-        
-        private void Connect_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        private DataBaseReference dbr = new DataBaseReference();
+       
         public bool Connection(String SSHIp, String Username, String Password)
         {
             try
@@ -31,7 +27,23 @@ namespace CommandGenerator
 
         }
 
-
+        public void Excute(string name, string command)
+        {
+            string[] data = dbr.AccessNetworkElement(name);
+            try
+            {
+                using (var client = new SshClient(data[0], data[1], data[2]))
+                {
+                    client.Connect();
+                    client.RunCommand(command);       //*Running Command Function will be Here *********************************************************
+                    client.Disconnect();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+        }
 
 
         public String Comm(String Command)

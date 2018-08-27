@@ -173,5 +173,10 @@ namespace CommandGenerator
         {
             exitPnlAddNetwork.ForeColor = Color.DimGray;
         }
+
+        internal class CircularButton : global::CommandGenerator.CircularButton
+        {
+
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.ExcuteBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmdGrid = new System.Windows.Forms.DataGridView();
+            this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BrowzeBtn = new System.Windows.Forms.Button();
             this.SheetsCB = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -44,17 +45,16 @@
             this.pnlManageUsers = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.usersGB = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new global::CommandGenerator.CircularButton();
+            this.btnAdd = new CommandGenerator.CircularButton();
             this.usersGrid = new System.Windows.Forms.DataGridView();
             this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ManageNetwork = new System.Windows.Forms.TabPage();
             this.pnlManageNetwork = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.circularButton1 = new global::CommandGenerator.CircularButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.circularButton1 = new CommandGenerator.CircularButton();
+            this.NetworkGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
@@ -69,7 +69,7 @@
             this.ManageNetwork.SuspendLayout();
             this.pnlManageNetwork.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetworkGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,6 +147,12 @@
             this.cmdGrid.RowTemplate.Height = 24;
             this.cmdGrid.Size = new System.Drawing.Size(655, 657);
             this.cmdGrid.TabIndex = 6;
+            // 
+            // Refresh
+            // 
+            this.Refresh.HeaderText = "Refresh";
+            this.Refresh.Name = "Refresh";
+            this.Refresh.ReadOnly = true;
             // 
             // BrowzeBtn
             // 
@@ -295,7 +301,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.circularButton1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.NetworkGrid);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(326, 3);
             this.groupBox1.Name = "groupBox1";
@@ -317,25 +323,28 @@
             this.circularButton1.UseVisualStyleBackColor = false;
             this.circularButton1.Click += new System.EventHandler(this.circularButton1_Click);
             // 
-            // dataGridView1
+            // NetworkGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
+            this.NetworkGrid.AllowUserToAddRows = false;
+            this.NetworkGrid.AllowUserToDeleteRows = false;
+            this.NetworkGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NetworkGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.NetworkGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.NetworkGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.NetworkGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.NetworkGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewButtonColumn1});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(655, 657);
-            this.dataGridView1.TabIndex = 0;
+            this.NetworkGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NetworkGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.NetworkGrid.Location = new System.Drawing.Point(3, 19);
+            this.NetworkGrid.Name = "NetworkGrid";
+            this.NetworkGrid.RowTemplate.Height = 24;
+            this.NetworkGrid.Size = new System.Drawing.Size(655, 657);
+            this.NetworkGrid.TabIndex = 0;
+            this.NetworkGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentClick);
+            this.NetworkGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentDoubleClick);
+            this.NetworkGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellEndEdit);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -354,12 +363,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
-            // 
-            // Refresh
-            // 
-            this.Refresh.HeaderText = "Refresh";
-            this.Refresh.Name = "Refresh";
-            this.Refresh.ReadOnly = true;
             // 
             // User
             // 
@@ -389,7 +392,7 @@
             this.ManageNetwork.ResumeLayout(false);
             this.pnlManageNetwork.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NetworkGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
@@ -403,7 +406,6 @@
         private System.Windows.Forms.Panel pnlManageUsers;
         private System.Windows.Forms.GroupBox usersGB;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private CircularButton btnAdd;
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
         private System.Windows.Forms.Panel pnlCommands;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -412,8 +414,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         public System.Windows.Forms.DataGridView usersGrid;
         private System.Windows.Forms.GroupBox groupBox1;
-        private CircularButton circularButton1;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView NetworkGrid;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.Button ExcuteBtn;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -421,6 +422,8 @@
         private System.Windows.Forms.Button BrowzeBtn;
         private System.Windows.Forms.ComboBox SheetsCB;
         private System.Windows.Forms.DataGridViewButtonColumn Refresh;
+        private CommandGenerator.CircularButton btnAdd;
+        private CommandGenerator.CircularButton circularButton1;
     }
 }
 

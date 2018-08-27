@@ -22,6 +22,11 @@ namespace CommandGenerator
             workbookProcessor.MarkStatus();
         }
 
+        public void ExcuteButtonPressed()
+        {
+            workbookProcessor.ExcuteCommands();
+        }
+
         public DataTable GetSheet(int tableName)
         {
             return workbookProcessor.GetSheets()[tableName];

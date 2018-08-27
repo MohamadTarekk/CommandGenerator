@@ -45,6 +45,7 @@
             this.exitPnlAddNetwork = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTbPassword = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -52,7 +53,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMoveable = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -251,6 +251,16 @@
             this.panel2.Size = new System.Drawing.Size(410, 551);
             this.panel2.TabIndex = 7;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
+            this.flowLayoutPanel1.TabIndex = 20;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
+            // 
             // pnlTbPassword
             // 
             this.pnlTbPassword.Location = new System.Drawing.Point(15, 375);
@@ -324,15 +334,6 @@
             this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
             this.pnlMoveable.TabIndex = 6;
             this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
-            this.flowLayoutPanel1.TabIndex = 20;
-            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
             // 
             // AddingNetworkForm
             // 

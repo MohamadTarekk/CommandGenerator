@@ -1,5 +1,4 @@
 ﻿using ExcelDataReader;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -12,6 +11,7 @@ namespace CommandGenerator
         private List<string> networkElements = new List<string>();
         private List<int> networkElementsStatus = new List<int>();
         private DataBaseReference dataBaseReference = new DataBaseReference();
+        private SSHConnection SSH = new SSHConnection();
         
         public void ReadWorkbook(string path, int filterIndex)
         {
@@ -47,6 +47,20 @@ namespace CommandGenerator
                     if (!networkElements.Contains(dr[0].ToString()))
                     {
                         networkElements.Add(dr[0].ToString());
+                    }
+                }
+            }
+        }
+
+        public void ExcuteCommands()
+        {
+            foreach (DataTable dt in result.Tables)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr[2].Equals("Available"))
+                    {
+                        SSH.Excute(dr[0].ToString(), dr[1].ToString());
                     }
                 }
             }

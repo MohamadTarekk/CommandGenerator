@@ -11,20 +11,26 @@ namespace CommandGenerator
 {
     public partial class User : Form
     {
+        public User()
+        {
+            InitializeComponent();
+        }
+
         // Global Variables
         public static int row;
         private bool editFlag = false;
         public static string oldUsername, oldPassword;
+        public static string oldname,oldpass;
 
+        Queries q = new Queries();
         public static string[] s = { "\\bin" };
         public static string database =
                        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
         string path =
             "Data Source=" + Path.GetFullPath(database);
-        public User()
-        {
-            InitializeComponent();
-        }
+
+
+        //////////--------------------Users Tab--------------------\\\\\\\\\\
 
         private void User_Load(object sender, EventArgs e)
         {
@@ -32,7 +38,7 @@ namespace CommandGenerator
             myconnection.Open();
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = myconnection;
-            cmd.CommandText = "Select * from usersTable";
+            cmd.CommandText = q.ShowUsers();
             using (SQLiteDataReader sdr = cmd.ExecuteReader())
             {
                 DataTable dt = new DataTable();
@@ -41,7 +47,22 @@ namespace CommandGenerator
                 myconnection.Close();
                 usersGrid.DataSource = dt;
             }
+            myconnection.Open();
+            SQLiteCommand cmd1 = new SQLiteCommand();
+            cmd1.Connection = myconnection;
+            cmd1.CommandText = q.ShowNetworks();
+            using (SQLiteDataReader sdr1 = cmd1.ExecuteReader())
+            {
+                DataTable dt1 = new DataTable();
+                dt1.Load(sdr1);
+                sdr1.Close();
+                myconnection.Close();
+                NetworkGrid.DataSource = dt1;
+
+            }
+
             usersGrid.DefaultCellStyle.ForeColor = Color.Black;
+            NetworkGrid.DefaultCellStyle.ForeColor = Color.Black;
         }
 
         private void User_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,7 +75,7 @@ namespace CommandGenerator
             SQLiteConnection myconn = new SQLiteConnection(path);
             myconn.Open();
             DataTable show = new DataTable();
-            SQLiteDataAdapter adap = new SQLiteDataAdapter("Select * from usersTable", myconn);
+            SQLiteDataAdapter adap = new SQLiteDataAdapter(q.ShowUsers(), myconn);
             adap.Fill(show);
             try
             {
@@ -173,7 +194,7 @@ namespace CommandGenerator
 
         private void circularButton1_Click(object sender, EventArgs e)
         {
-            AddingNetworkForm anf = new AddingNetworkForm();
+            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
             anf.ShowDialog();
             anf.Dispose();
         }
@@ -217,5 +238,93 @@ namespace CommandGenerator
             commandsTabController.BrowzeButtonClicked(SheetsCB);
         }
 
+        private void ExcuteBtn_Click(object sender, EventArgs e)
+        {
+            commandsTabController.ExcuteButtonPressed();
+        }
+
+        //////////--------------------Networks Tab--------------------\\\\\\\\\\
+
+        private void NetworkGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                try
+                {
+                    string str = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    if (MessageBox.Show("Are you sure you want to delete user '" + str + "' ?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        SQLiteConnection myconnection = new SQLiteConnection(path);
+                        myconnection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand(q.DeleteNetwork(str), myconnection);
+                        cmd.ExecuteNonQuery();
+                        myconnection.Close();
+                        ListingNetworks();
+                    }
+                }
+                catch (Exception ex) { }
+            }
+        }
+        private void ListingNetworks()
+        {
+            SQLiteConnection myconn = new SQLiteConnection(path);
+            try
+            {
+
+                myconn.Open();
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Network");
+            }
+            Queries q = new Queries();
+            DataTable show = new DataTable();
+            SQLiteDataAdapter adap = new SQLiteDataAdapter(q.ShowNetworks(), myconn);
+            adap.Fill(show);
+            NetworkGrid.DataSource = show;
+            myconn.Close();
+        }
+
+        private void NetworkGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1)
+            {
+                row = e.RowIndex;
+                String oldIp = NetworkGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                String oldusername = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                oldpass = Decrypt(NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
+                 oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+               NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
+                NetworkGrid.BeginEdit(true);
+
+            }
+        }
+
+        private void NetworkGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string Ip = NetworkGrid.Rows[row].Cells[2].Value.ToString();
+            string Username = NetworkGrid.Rows[row].Cells[3].Value.ToString();
+            string Password = NetworkGrid.Rows[row].Cells[4].Value.ToString();
+            string Name = NetworkGrid.Rows[row].Cells[5].Value.ToString();
+
+            if (MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+
+                Password = Encrypt(Password);
+                SQLiteConnection myconnection = new SQLiteConnection(path);
+                myconnection.Open();
+                SQLiteCommand cmd = new SQLiteCommand("update Network set Ip = @Ip , username=@username, password= @password , Name = @Name where Name=@oldname  ;", myconnection);
+                cmd.Parameters.Add(new SQLiteParameter("@username", Username));
+                cmd.Parameters.Add(new SQLiteParameter("@password", Password));
+                cmd.Parameters.Add(new SQLiteParameter("@Ip", Ip));
+                cmd.Parameters.Add(new SQLiteParameter("@Name", Name));
+                cmd.Parameters.Add(new SQLiteParameter("@oldname",oldname));
+                cmd.ExecuteNonQuery();
+                myconnection.Close();
+            }
+            ListingNetworks();
+        }
     }
 }

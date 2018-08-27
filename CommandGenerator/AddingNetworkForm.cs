@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CommandGenerator
@@ -15,7 +13,14 @@ namespace CommandGenerator
         private bool usernameEntered;
         private bool IPEntered;
         private bool NetworkEntered;
-
+        Queries q = new Queries();
+        DataGridView NetworkGrid = new DataGridView();
+        /* Making the panel's corner round */
+        public static string[] s = { "\\bin" };
+        public static string database =
+        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
+        public static string pathh =
+            "Data Source=" + Path.GetFullPath(database);
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
         (
@@ -27,11 +32,12 @@ namespace CommandGenerator
             int nHeightEllipse // width of ellipse
         );
 
-        public AddingNetworkForm()
+        public AddingNetworkForm(DataGridView NetworkGrid)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            this.NetworkGrid = NetworkGrid;
         }
 
         public bool checkPnlAddNetwork()
@@ -156,13 +162,81 @@ namespace CommandGenerator
             string password = User.Encrypt(tbPassword.Text);
             if (checkPnlAddNetwork())
             {
-                // add data entered successfully 
-                // enter yout code here
-                this.Hide();
+                if (AddingNetworks(username, password, IP, network))
+                {
+                    MessageBox.Show("Network Added Successfully");
+                    ListingNetworks();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Error Occured", "Warning");
+
+                }
+
+
             }
             else
                 MessageBox.Show("Please provide all the required information.", "Warning");
         }
+        private void ListingNetworks()
+        {
+            SQLiteConnection myconn = new SQLiteConnection(pathh);
+            try
+            {
+                
+                myconn.Open();
+                
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Network");
+            }
+            Queries q = new Queries();
+            DataTable show = new DataTable();
+            SQLiteDataAdapter adap = new SQLiteDataAdapter(q.ShowNetworks(), myconn);
+            adap.Fill(show);
+            NetworkGrid.DataSource = show;
+            myconn.Close();
+        }
+
+        private bool AddingNetworks(String Username, String Enc_Password, String IP, String Name)
+        {
+
+            SQLiteConnection myconn = new SQLiteConnection(pathh);
+            try
+            {
+                myconn.Open();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Check Network");
+            }
+            Queries q = new Queries();
+            DataTable show = new DataTable();
+            SQLiteCommand cmd = new SQLiteCommand(q.AddNetwork(Username, Enc_Password, IP, Name), myconn);
+            int Result = cmd.ExecuteNonQuery();
+            myconn.Close();
+            if (Result > 0)
+
+                return true;
+            else
+                return false;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         private void AddingNetworkForm_Shown(object sender, EventArgs e)
         {
@@ -184,6 +258,11 @@ namespace CommandGenerator
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
         //*/
     }

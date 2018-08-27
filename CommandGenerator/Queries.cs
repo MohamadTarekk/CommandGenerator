@@ -21,7 +21,7 @@ namespace CommandGenerator
         }
         public String AddNetwork(String Username, String Password, String Ip, String Name)
         {
-            return "Insert Into Network(Username,Password,Is_Admin) Values('" + Username + "','" + Password + "','" + Ip + "','" + Name + "')";
+            return "Insert Into Network(Username,Password,Ip,Name) Values('" + Username + "','" + Password + "','" + Ip + "','" + Name + "')";
         }
 
         public String DeleteUser(String Username)
@@ -30,7 +30,7 @@ namespace CommandGenerator
         }
         public String DeleteNetwork(String Name)
         {
-            return "Delete From usersTable Where Name='" + Name + "'";
+            return "Delete From Network Where Name='" + Name + "'";
         }
         public String Login(String Username, String Password)
         {

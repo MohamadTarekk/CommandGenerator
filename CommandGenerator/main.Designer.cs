@@ -46,8 +46,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -239,17 +239,6 @@
             this.panel2.Size = new System.Drawing.Size(487, 668);
             this.panel2.TabIndex = 13;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
-            this.panel1.Controls.Add(this.pnlMoveable);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(1, -50);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(299, 668);
-            this.panel1.TabIndex = 12;
-            // 
             // CloseLabel
             // 
             this.CloseLabel.AutoSize = true;
@@ -262,6 +251,17 @@
             this.CloseLabel.TabIndex = 21;
             this.CloseLabel.Text = "x";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
+            this.panel1.Controls.Add(this.pnlMoveable);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(1, -50);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(299, 679);
+            this.panel1.TabIndex = 12;
             // 
             // CommandGenerator
             // 

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace CommandGenerator
@@ -9,17 +10,21 @@ namespace CommandGenerator
 
         public void BrowzeButtonClicked(ComboBox sheetsCB)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Excel Workbook 97-2003|*.xls|Excel Workbook|*.xlsx", ValidateNames = true })
+            try
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Excel Workbook 97-2003|*.xls|Excel Workbook|*.xlsx", ValidateNames = true })
                 {
-                    workbookProcessor.ReadWorkbook(ofd.FileName, ofd.FilterIndex);
-                    sheetsCB.Items.Clear();
-                    foreach (DataTable dt in workbookProcessor.GetSheets())
-                        sheetsCB.Items.Add(dt.TableName);
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        workbookProcessor.ReadWorkbook(ofd.FileName, ofd.FilterIndex);
+                        sheetsCB.Items.Clear();
+                        foreach (DataTable dt in workbookProcessor.GetSheets())
+                            sheetsCB.Items.Add(dt.TableName);
+                    }
                 }
+                workbookProcessor.MarkStatus();
             }
-            workbookProcessor.MarkStatus();
+            catch(Exception ex) { Console.WriteLine(ex.Message); }
         }
 
         public void ExcuteButtonPressed()

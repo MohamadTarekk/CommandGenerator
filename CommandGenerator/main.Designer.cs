@@ -46,7 +46,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.CloseLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -62,6 +61,7 @@
             this.pnlMoveable.Name = "pnlMoveable";
             this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
             this.pnlMoveable.TabIndex = 6;
+            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
             // 
             // panel5
             // 
@@ -70,7 +70,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 1);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1, 619);
+            this.panel5.Size = new System.Drawing.Size(1, 551);
             this.panel5.TabIndex = 16;
             // 
             // pictureBox1
@@ -96,14 +96,18 @@
             this.exitPnlAddNetwork.Size = new System.Drawing.Size(31, 37);
             this.exitPnlAddNetwork.TabIndex = 0;
             this.exitPnlAddNetwork.Text = "x";
+            this.exitPnlAddNetwork.Click += new System.EventHandler(this.exitPnlAddNetwork_Click);
+            this.exitPnlAddNetwork.MouseLeave += new System.EventHandler(this.exitPnlAddNetwork_MouseLeave);
+            this.exitPnlAddNetwork.MouseHover += new System.EventHandler(this.exitPnlAddNetwork_MouseHover);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(487, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
             this.flowLayoutPanel1.TabIndex = 20;
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
             // 
             // pnlTbPassword
             // 
@@ -142,6 +146,8 @@
             this.txt_Password.Size = new System.Drawing.Size(325, 32);
             this.txt_Password.TabIndex = 4;
             this.txt_Password.Text = "Password";
+            this.txt_Password.Enter += new System.EventHandler(this.txt_Password_Enter);
+            this.txt_Password.Leave += new System.EventHandler(this.txt_Password_Leave);
             // 
             // Log
             // 
@@ -178,13 +184,15 @@
             this.txt_Username.Size = new System.Drawing.Size(325, 32);
             this.txt_Username.TabIndex = 3;
             this.txt_Username.Text = "Username";
+            this.txt_Username.Enter += new System.EventHandler(this.txt_Username_Enter);
+            this.txt_Username.Leave += new System.EventHandler(this.txt_Username_Leave);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
-            this.label1.Location = new System.Drawing.Point(6, 149);
+            this.label1.Location = new System.Drawing.Point(6, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 37);
             this.label1.TabIndex = 0;
@@ -194,20 +202,20 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 620);
+            this.panel6.Location = new System.Drawing.Point(0, 552);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(865, 1);
+            this.panel6.Size = new System.Drawing.Size(710, 1);
             this.panel6.TabIndex = 17;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(865, 1);
+            this.panel4.Location = new System.Drawing.Point(710, 1);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 620);
+            this.panel4.Size = new System.Drawing.Size(1, 552);
             this.panel4.TabIndex = 15;
             // 
             // panel3
@@ -217,12 +225,11 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(866, 1);
+            this.panel3.Size = new System.Drawing.Size(711, 1);
             this.panel3.TabIndex = 14;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.CloseLabel);
             this.panel2.Controls.Add(this.exitPnlAddNetwork);
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Controls.Add(this.pnlTbPassword);
@@ -233,41 +240,28 @@
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Controls.Add(this.txt_Username);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(378, -50);
+            this.panel2.Location = new System.Drawing.Point(300, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(487, 668);
+            this.panel2.Size = new System.Drawing.Size(410, 551);
             this.panel2.TabIndex = 13;
-            // 
-            // CloseLabel
-            // 
-            this.CloseLabel.AutoSize = true;
-            this.CloseLabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CloseLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.CloseLabel.Location = new System.Drawing.Point(447, 60);
-            this.CloseLabel.Margin = new System.Windows.Forms.Padding(1);
-            this.CloseLabel.Name = "CloseLabel";
-            this.CloseLabel.Size = new System.Drawing.Size(31, 37);
-            this.CloseLabel.TabIndex = 21;
-            this.CloseLabel.Text = "x";
-            this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
             this.panel1.Controls.Add(this.pnlMoveable);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(1, -50);
+            this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(299, 679);
+            this.panel1.Size = new System.Drawing.Size(299, 551);
             this.panel1.TabIndex = 12;
             // 
             // CommandGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 621);
+            this.ClientSize = new System.Drawing.Size(711, 553);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel4);
@@ -275,9 +269,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CommandGenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.Shown += new System.EventHandler(this.CommandGenerator_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -308,6 +304,5 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label CloseLabel;
     }
 }

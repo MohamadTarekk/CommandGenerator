@@ -16,9 +16,11 @@ namespace CommandGenerator
     {
         DataGridView usersGrid = new DataGridView();
         private bool usernameEntered;
+        
+        /* Making the panel's corner round */
         public static string[] s = { "\\bin" };
         public static string database =
-                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
+        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Nokia.db";
         public static string pathh =
             "Data Source=" + Path.GetFullPath(database);
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -31,6 +33,7 @@ namespace CommandGenerator
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+        //*/
 
         public AddingUserForm(DataGridView usersGrid)
         {
@@ -108,7 +111,7 @@ namespace CommandGenerator
             if (checkPnlAddUser())
             {
                
-        SQLiteConnection myconnection = new SQLiteConnection(pathh);
+                SQLiteConnection myconnection = new SQLiteConnection(pathh);
                 myconnection.Open();
                 string query = "select count(*) from usersTable where username='" + username + "';";
                 SQLiteCommand cmd = new SQLiteCommand(query, myconnection);

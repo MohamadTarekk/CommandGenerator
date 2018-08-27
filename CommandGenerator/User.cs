@@ -32,7 +32,7 @@ namespace CommandGenerator
             myconnection.Open();
             SQLiteCommand cmd = new SQLiteCommand();
             cmd.Connection = myconnection;
-            cmd.CommandText = "Select * from usersTable";
+            cmd.CommandText = "Select * from Users";
             using (SQLiteDataReader sdr = cmd.ExecuteReader())
             {
                 DataTable dt = new DataTable();

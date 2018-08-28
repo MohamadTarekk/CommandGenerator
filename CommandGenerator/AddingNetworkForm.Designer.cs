@@ -153,6 +153,7 @@
             this.tbUsername.TabIndex = 3;
             this.tbUsername.Text = "Username";
             this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIP_KeyDown);
             this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
             // pictureBox5
@@ -177,6 +178,7 @@
             this.tbNetwork.TabIndex = 2;
             this.tbNetwork.Text = "Network Name";
             this.tbNetwork.Enter += new System.EventHandler(this.tbNetwork_Enter);
+            this.tbNetwork.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIP_KeyDown);
             this.tbNetwork.Leave += new System.EventHandler(this.tbNetwork_Leave);
             // 
             // pictureBox4
@@ -201,6 +203,7 @@
             this.tbIP.TabIndex = 1;
             this.tbIP.Text = "IP";
             this.tbIP.Enter += new System.EventHandler(this.tbIP_Enter);
+            this.tbIP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIP_KeyDown);
             this.tbIP.Leave += new System.EventHandler(this.tbIP_Leave);
             // 
             // exitPnlAddNetwork
@@ -291,6 +294,7 @@
             this.tbPassword.TabIndex = 4;
             this.tbPassword.Text = "Password";
             this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbIP_KeyDown);
             this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
             // 
             // pictureBox1

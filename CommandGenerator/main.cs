@@ -178,5 +178,13 @@ namespace CommandGenerator
         {
 
         }
+
+        private void txt_Username_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                Log.PerformClick();
+            }
+        }
     }
 }

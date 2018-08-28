@@ -227,5 +227,12 @@ namespace CommandGenerator
 
         }
         //*/
+        private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnPerformAdd.PerformClick();
+            }
+        }
     }
 }

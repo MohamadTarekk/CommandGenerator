@@ -265,5 +265,13 @@ namespace CommandGenerator
 
         }
         //*/
+
+        private void tbIP_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                btnPerformAdd.PerformClick();
+            }
+        }
     }
 }

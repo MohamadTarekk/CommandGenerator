@@ -199,6 +199,7 @@
             this.tbConfirmPassword.TabIndex = 3;
             this.tbConfirmPassword.Text = "Confirm Password";
             this.tbConfirmPassword.Enter += new System.EventHandler(this.tbConfirmPassword_Enter);
+            this.tbConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             this.tbConfirmPassword.Leave += new System.EventHandler(this.tbConfirmPassword_Leave);
             // 
             // pictureBox5
@@ -223,6 +224,7 @@
             this.tbPassword.TabIndex = 2;
             this.tbPassword.Text = "Password";
             this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
             // 
             // pictureBox4
@@ -247,6 +249,7 @@
             this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
             this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
+            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
             this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
             // 
             // label1

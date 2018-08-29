@@ -42,14 +42,7 @@ namespace CommandGenerator
 
                     client.Connect();
                     var cmd = client.RunCommand(command);
-                    string strPath = Environment.GetFolderPath(
-           System.Environment.SpecialFolder.DesktopDirectory);
-                    string path = Path.GetFullPath(strPath) + "\\Netelements";
-                    if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                    string Filep = "AllCommands.txt";
-                    string lpath = path + "\\" + Filep;
-                    using (StreamWriter w = File.AppendText(Filep)) ;
-                    string file = Path.Combine(path, Filep);
+                    FileParser.CreateDirectory();
                     FileParser.SaveResult(name, IP, cmd.CommandText, cmd.Result);
                     client.Disconnect();
                     return true;

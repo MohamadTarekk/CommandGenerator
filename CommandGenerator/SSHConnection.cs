@@ -1,5 +1,6 @@
 ﻿using Renci.SshNet;
 using System;
+using System.IO;
 
 namespace CommandGenerator
 {
@@ -38,8 +39,17 @@ namespace CommandGenerator
             {
                 using (var client = new SshClient(IP, username, password))
                 {
+
                     client.Connect();
                     var cmd = client.RunCommand(command);
+                    string strPath = Environment.GetFolderPath(
+           System.Environment.SpecialFolder.DesktopDirectory);
+                    string path = Path.GetFullPath(strPath) + "\\Netelements";
+                    if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                    string Filep = "AllCommands.txt";
+                    string lpath = path + "\\" + Filep;
+                    using (StreamWriter w = File.AppendText(Filep)) ;
+                    string file = Path.Combine(path, Filep);
                     FileParser.SaveResult(name, IP, cmd.CommandText, cmd.Result);
                     client.Disconnect();
                     return true;

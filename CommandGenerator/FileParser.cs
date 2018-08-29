@@ -1,14 +1,33 @@
 ﻿using System;
 using System.IO;
 
+
 namespace CommandGenerator
 {
     class FileParser
     {
         public static int counter = 0;
+        public static int Ncounter = 0;
         public static void SaveResult(string name, string IP, string commandText, string result)
         {
-
+            string strPath = Environment.GetFolderPath(
+           System.Environment.SpecialFolder.DesktopDirectory);
+            string path = Path.GetFullPath(strPath) + "\\networkelements";
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            path += "\\" + name;
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string Filep = "command_" + Ncounter + ".txt";
+            string lpath = path + "\\" + Filep;
+            using (StreamWriter w = File.AppendText(Filep)) ;
+            string file = Path.Combine(path, Filep);
+            string text = name + Environment.NewLine + IP + Environment.NewLine + commandText + Environment.NewLine + result;
+            File.WriteAllText(file, text);
+            string alltxt = path + "AllCommands.txt";
+            using (StreamWriter w = File.AppendText(alltxt))
+            {
+                w.WriteLine(text);
+            }
+            Ncounter++;
         }
 
         public static void LogException(string error)
@@ -25,5 +44,6 @@ namespace CommandGenerator
             counter++;
 
         }
+       
     }
 }

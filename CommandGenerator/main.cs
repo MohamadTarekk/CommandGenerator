@@ -36,8 +36,6 @@ namespace CommandGenerator
 
         private bool Login()
         {
-
-
             String logname = txt_Username.Text;
             String Password = User.Encrypt(txt_Password.Text);
             string[] s = { "\\bin" };

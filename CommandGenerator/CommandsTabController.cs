@@ -22,7 +22,7 @@ namespace CommandGenerator
                             sheetsCB.Items.Add(dt.TableName);
                     }
                 }
-                workbookProcessor.MarkStatus();
+                workbookProcessor.InitializeStatus();
             }
             catch(Exception ex) { Console.WriteLine(ex.Message); }
         }
@@ -34,7 +34,25 @@ namespace CommandGenerator
 
         public DataTable GetSheet(int tableName)
         {
-            return workbookProcessor.GetSheets()[tableName];
+            try
+            {
+                return workbookProcessor.GetSheets()[tableName];
+            }
+            catch(Exception ex)
+            {
+                FileParser.LogException(ex);
+                return null;
+            }
+        }
+
+        public void RefreshConnection(string name)
+        {
+            workbookProcessor.RefreshConnection(name);
+        }
+
+        public void ClearGrid()
+        {
+            workbookProcessor.Reset();
         }
     }
 }

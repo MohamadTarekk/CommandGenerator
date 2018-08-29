@@ -14,6 +14,11 @@ namespace CommandGenerator
         public User()
         {
             InitializeComponent();
+            CommandsTabController c = new CommandsTabController();
+            if (c.GetSheet(0) == null)
+            {
+                SheetsCB.Items.Add("null");
+            }
         }
 
         // Global Variables
@@ -151,7 +156,9 @@ namespace CommandGenerator
         {
             string newUsername = usersGrid.Rows[row].Cells[2].Value.ToString();
             string newPassword = usersGrid.Rows[row].Cells[3].Value.ToString();
-            if (editFlag && !checkUsername(newUsername) && (newUsername != oldUsername || newPassword != oldPassword) &&
+            // MessageBox.Show("new username " + newUsername + " oldUsername " + oldUsername);
+            // MessageBox.Show("new password " + newPassword + " oldpassword " + oldPassword);
+            if (editFlag && (!checkUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
                     (MessageBox.Show("Are you sure you want to save edits?",
                         "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
@@ -221,28 +228,6 @@ namespace CommandGenerator
             return cipherText;
         }
 
-        //////////--------------------Commands Tab--------------------\\\\\\\\\\
-
-        CommandsTabController commandsTabController = new CommandsTabController();
-
-        private void SheetsCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmdGrid.DataSource = commandsTabController.GetSheet(SheetsCB.SelectedIndex);
-            cmdGrid.DefaultCellStyle.ForeColor = Color.Black;
-
-        }
-
-        private void BrowzeBtn_Click(object sender, EventArgs e)
-        {
-            cmdGrid.DataSource = null;
-            commandsTabController.BrowzeButtonClicked(SheetsCB);
-        }
-
-        private void ExcuteBtn_Click(object sender, EventArgs e)
-        {
-            commandsTabController.ExcuteButtonPressed();
-        }
-
         //////////--------------------Networks Tab--------------------\\\\\\\\\\
 
         private void NetworkGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -262,7 +247,10 @@ namespace CommandGenerator
                         ListingNetworks();
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    FileParser.LogException(ex);
+                }
             }
         }
         private void ListingNetworks()
@@ -270,10 +258,7 @@ namespace CommandGenerator
             SQLiteConnection myconn = new SQLiteConnection(path);
             try
             {
-
                 myconn.Open();
-
-
             }
             catch (Exception)
             {
@@ -298,7 +283,6 @@ namespace CommandGenerator
                  oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
                 NetworkGrid.BeginEdit(true);
-
             }
         }
 
@@ -311,7 +295,6 @@ namespace CommandGenerator
 
             if (MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-
                 Password = Encrypt(Password);
                 SQLiteConnection myconnection = new SQLiteConnection(path);
                 myconnection.Open();
@@ -325,6 +308,72 @@ namespace CommandGenerator
                 myconnection.Close();
             }
             ListingNetworks();
+        }
+
+        //////////--------------------Commands Tab--------------------\\\\\\\\\\
+
+        CommandsTabController commandsTabController = new CommandsTabController();
+
+        private void SheetsCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshCmdGrid();
+        }
+
+        public void RefreshCmdGrid()
+        {
+            CmdGrid.DataSource = commandsTabController.GetSheet(SheetsCB.SelectedIndex);
+            CmdGrid.DefaultCellStyle.ForeColor = Color.Black;
+            CmdGrid.DefaultCellStyle.BackColor = Color.AliceBlue;
+            CmdGrid.BackgroundColor = Color.AliceBlue;
+            SetGridColors(3, "Status", "Available", "Doesn't Exist");
+            SetGridColors(4, "Excution", "true", "false");
+        }
+
+        public void SetGridColors(int ColumnIndex, string ColumnName, string GreenState, string RedState)
+        {
+            if (CmdGrid.Columns.Contains(ColumnName))
+            {
+                for (int itr = 0; itr < CmdGrid.Rows.Count; itr++)
+                {
+                    if (CmdGrid.Rows[itr].Cells[ColumnIndex].ToString().Equals(GreenState))
+                        CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.LawnGreen;
+                    else if (CmdGrid.Rows[itr].Cells[ColumnIndex].ToString().Equals(RedState))
+                        CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.Red;
+                    else
+                        CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.Yellow;
+                }
+            }
+        }
+
+        private void CmdGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                commandsTabController.RefreshConnection(CmdGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+                RefreshCmdGrid();
+            }
+        }
+
+        private void BrowzeBtn_Click(object sender, EventArgs e)
+        {
+            commandsTabController.BrowzeButtonClicked(SheetsCB);
+            if (commandsTabController.GetSheet(0) != null)
+                ExcuteBtn.Enabled = true;
+        }
+
+        private void ClearBtn_Click(object sender, EventArgs e)
+        {
+            commandsTabController.ClearGrid();
+            CmdGrid.DataSource = null;
+            SheetsCB.Text = null;
+            SheetsCB.Items.Clear();
+            ExcuteBtn.Enabled = false;
+        }
+
+        private void ExcuteBtn_Click(object sender, EventArgs e)
+        {
+            commandsTabController.ExcuteButtonPressed();
+            RefreshCmdGrid();
         }
     }
 }

@@ -7,53 +7,49 @@ namespace CommandGenerator
     {
         private DataBaseReference dbr = new DataBaseReference();
        
-        public bool Connection(String SSHIp, String Username, String Password)
+        public bool TestConnection(string SSHIp, string Username, string Password)
         {
             try
             {
+                bool res = false;
                 using (var client = new SshClient(SSHIp, Username, Password))
                 {
                     client.Connect();
-                    client.RunCommand(Comm("test"));       //*Running Command Function will be Here *********************************************************
+                    res = client.IsConnected;
                     client.Disconnect();
                 }
-                return true;
+                return res;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.Write(e.Message);
+                FileParser.LogException(ex);
                 return false;
             }
 
         }
 
-        public void Excute(string name, string command)
+        public bool Excute(string name, string command)
         {
             string[] data = dbr.AccessNetworkElement(name);
+            string IP = data[0];
+            string username = data[1];
+            string password = data[2];
             try
             {
-                using (var client = new SshClient(data[0], data[1], data[2]))
+                using (var client = new SshClient(IP, username, password))
                 {
                     client.Connect();
-                    client.RunCommand(command);       //*Running Command Function will be Here *********************************************************
+                    var cmd = client.RunCommand(command);
+                    FileParser.SaveResult(name, IP, cmd.CommandText, cmd.Result);
                     client.Disconnect();
+                    return true;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.Write(e.Message);
+                FileParser.LogException(ex);
+                return false;
             }
         }
-
-
-        public String Comm(String Command)
-        {
-
-            //* I Am Wiating The Command Came from Excel File Sheet and added To The Array To run in The Above Starred Function 
-
-            return Command;
-
-        }
-
     }
 }

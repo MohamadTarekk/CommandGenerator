@@ -57,10 +57,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bunifu_UI_v1.52, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\CMD Generator\CMD Generator\CmdGenerator\CmdGenerator.Application\bin\Debug\Bunifu_UI_v1.52.dll</HintPath>
-    </Reference>
     <Reference Include="ExcelDataReader, Version=3.4.1.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader-OptionalStreams.3.4.1\lib\net20\ExcelDataReader.dll</HintPath>
     </Reference>
@@ -107,6 +103,7 @@
     </Compile>
     <Compile Include="CommandsTabController.cs" />
     <Compile Include="DataBaseReference.cs" />
+    <Compile Include="FileParser.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,7 +144,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
-    <None Include="Data\Nokia.db" />
+    <None Include="Data\Nokia.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -34,9 +34,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Commands = new System.Windows.Forms.TabPage();
             this.pnlCommands = new System.Windows.Forms.Panel();
+            this.ClearBtn = new System.Windows.Forms.Button();
             this.ExcuteBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmdGrid = new System.Windows.Forms.DataGridView();
+            this.CmdGrid = new System.Windows.Forms.DataGridView();
             this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BrowzeBtn = new System.Windows.Forms.Button();
             this.SheetsCB = new System.Windows.Forms.ComboBox();
@@ -59,7 +60,7 @@
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmdGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ManageUsers.SuspendLayout();
             this.pnlManageUsers.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             this.pnlCommands.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCommands.BackgroundImage")));
             this.pnlCommands.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCommands.Controls.Add(this.ClearBtn);
             this.pnlCommands.Controls.Add(this.ExcuteBtn);
             this.pnlCommands.Controls.Add(this.groupBox2);
             this.pnlCommands.Controls.Add(this.BrowzeBtn);
@@ -111,8 +113,19 @@
             this.pnlCommands.Size = new System.Drawing.Size(992, 685);
             this.pnlCommands.TabIndex = 0;
             // 
+            // ClearBtn
+            // 
+            this.ClearBtn.Location = new System.Drawing.Point(27, 474);
+            this.ClearBtn.Name = "ClearBtn";
+            this.ClearBtn.Size = new System.Drawing.Size(115, 58);
+            this.ClearBtn.TabIndex = 12;
+            this.ClearBtn.Text = "Clear";
+            this.ClearBtn.UseVisualStyleBackColor = true;
+            this.ClearBtn.Click += new System.EventHandler(this.ClearBtn_Click);
+            // 
             // ExcuteBtn
             // 
+            this.ExcuteBtn.Enabled = false;
             this.ExcuteBtn.Location = new System.Drawing.Point(187, 474);
             this.ExcuteBtn.Name = "ExcuteBtn";
             this.ExcuteBtn.Size = new System.Drawing.Size(115, 58);
@@ -122,7 +135,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cmdGrid);
+            this.groupBox2.Controls.Add(this.CmdGrid);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(326, 3);
             this.groupBox2.Name = "groupBox2";
@@ -131,22 +144,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Commands Sheet";
             // 
-            // cmdGrid
+            // CmdGrid
             // 
-            this.cmdGrid.AllowUserToAddRows = false;
-            this.cmdGrid.AllowUserToDeleteRows = false;
-            this.cmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.cmdGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cmdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CmdGrid.AllowUserToAddRows = false;
+            this.CmdGrid.AllowUserToDeleteRows = false;
+            this.CmdGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.CmdGrid.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.CmdGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CmdGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Refresh});
-            this.cmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmdGrid.Location = new System.Drawing.Point(3, 19);
-            this.cmdGrid.Name = "cmdGrid";
-            this.cmdGrid.ReadOnly = true;
-            this.cmdGrid.RowTemplate.Height = 24;
-            this.cmdGrid.Size = new System.Drawing.Size(655, 657);
-            this.cmdGrid.TabIndex = 6;
+            this.CmdGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CmdGrid.Location = new System.Drawing.Point(3, 19);
+            this.CmdGrid.Name = "CmdGrid";
+            this.CmdGrid.ReadOnly = true;
+            this.CmdGrid.RowTemplate.Height = 24;
+            this.CmdGrid.Size = new System.Drawing.Size(655, 657);
+            this.CmdGrid.TabIndex = 6;
+            this.CmdGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CmdGrid_CellContentClick);
             // 
             // Refresh
             // 
@@ -156,7 +170,7 @@
             // 
             // BrowzeBtn
             // 
-            this.BrowzeBtn.Location = new System.Drawing.Point(27, 474);
+            this.BrowzeBtn.Location = new System.Drawing.Point(27, 281);
             this.BrowzeBtn.Name = "BrowzeBtn";
             this.BrowzeBtn.Size = new System.Drawing.Size(115, 58);
             this.BrowzeBtn.TabIndex = 8;
@@ -254,7 +268,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.usersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.usersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.usersGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.usersGrid.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.usersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Remove});
@@ -331,7 +345,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.NetworkGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.NetworkGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.NetworkGrid.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.NetworkGrid.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.NetworkGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.NetworkGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewButtonColumn1});
@@ -382,7 +396,7 @@
             this.Commands.ResumeLayout(false);
             this.pnlCommands.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cmdGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmdGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ManageUsers.ResumeLayout(false);
             this.pnlManageUsers.ResumeLayout(false);
@@ -418,12 +432,12 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.Button ExcuteBtn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView cmdGrid;
+        private System.Windows.Forms.DataGridView CmdGrid;
         private System.Windows.Forms.Button BrowzeBtn;
         private System.Windows.Forms.ComboBox SheetsCB;
         private System.Windows.Forms.DataGridViewButtonColumn Refresh;
         private CommandGenerator.CircularButton btnAdd;
         private CommandGenerator.CircularButton circularButton1;
+        private System.Windows.Forms.Button ClearBtn;
     }
 }
-

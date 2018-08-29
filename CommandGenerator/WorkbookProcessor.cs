@@ -1,4 +1,5 @@
 ﻿using ExcelDataReader;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -27,19 +28,34 @@ namespace CommandGenerator
             {
                 ConfigureDataTable = (_) => new ExcelDataTableConfiguration()
                 {
-                    UseHeaderRow = true
+                    UseHeaderRow = false
                 }
             });
             reader.Close();
+
+            foreach(DataTable dt in result.Tables)
+            {
+                dt.Columns[0].ColumnName = "Network Element";
+                dt.Columns[1].ColumnName = "Command";
+            }
         }
 
         public DataTableCollection GetSheets()
         {
-            return result.Tables;
+            try
+            {
+                return result.Tables;
+            }
+            catch(Exception ex)
+            {
+                FileParser.LogException(ex);
+                return null;
+            }
         }
         
         private void CountNetworkElements()
         {
+            // linq
             foreach (DataTable dt in result.Tables)
             {
                 foreach (DataRow dr in dt.Rows)
@@ -52,31 +68,17 @@ namespace CommandGenerator
             }
         }
 
-        public void ExcuteCommands()
-        {
-            foreach (DataTable dt in result.Tables)
-            {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    if (dr[2].Equals("Available"))
-                    {
-                        SSH.Excute(dr[0].ToString(), dr[1].ToString());
-                    }
-                }
-            }
-        }
-
-        private void GetStatus()
+        private void MarkStatus()
         {
             foreach (string s in networkElements)
                 networkElementsStatus.Add(dataBaseReference.CheckConn1(s));
         }
 
-        public void MarkStatus()
+        public void InitializeStatus()
         {
             string status;
             CountNetworkElements();
-            GetStatus();
+            MarkStatus();
             foreach(DataTable dt in result.Tables)
             {
                 dt.Columns.Add("Status");
@@ -91,16 +93,42 @@ namespace CommandGenerator
                     dr[2] = status;
                 }
             }
+            /// -1 => "Doesn't Exist" in database
+            /// 1 => "Available"
+            /// 0 => exists in database but has a "Connection Error"
         }
 
-        /// <summary>
-        /// The following functions constructs a list of names of the network elements listed
-        /// in the excel sheet without duplicates.
-        /// Then constructs a list indicating each element's status
-        /// -1 => "Doesn't Exist" in database
-        /// 1 => "Available"
-        /// 0 => exists in database but has a "Connection Error"
-        /// </summary>
+        public void RefreshConnection(string name)
+        {
+            int position = networkElements.IndexOf(name);
+            networkElementsStatus[position] = dataBaseReference.CheckConn1(name);
+        }
 
+        public void ExcuteCommands()
+        {
+            foreach (DataTable dt in result.Tables)
+            {
+                dt.Columns.Add("Excution");
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr[2].Equals("Available"))
+                    {
+                        bool excutionResult = SSH.Excute(dr[0].ToString(), dr[1].ToString());
+                        dr[3] = excutionResult.ToString();
+                    }
+                    else
+                    {
+                        dr[3] = "---";
+                    }
+                }
+            }
+        }
+
+        public void Reset()
+        {
+            result = null;
+            networkElements = null;
+            networkElementsStatus = null;
+        }
     }
 }

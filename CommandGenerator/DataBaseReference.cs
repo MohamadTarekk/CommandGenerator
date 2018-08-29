@@ -39,7 +39,7 @@ namespace CommandGenerator
                 SQLiteCommand cmd1 = new SQLiteCommand(q.GetPassword(Name), myconn);
                 String Password = Convert.ToString(cmd.ExecuteScalar());
 
-                if (ssh.Connection(Ip, Username, Password))
+                if (ssh.TestConnection(Ip, Username, Password))
                     return 1;
                 else
                     return 0;
@@ -77,7 +77,7 @@ namespace CommandGenerator
             String Username = Convert.ToString(cmd.ExecuteScalar());
             SQLiteCommand cmd1 = new SQLiteCommand(q.GetPassword(Name), myconn);
             String Password = Convert.ToString(cmd.ExecuteScalar());
-            if (ssh.Connection(Ip, Username, Password))
+            if (ssh.TestConnection(Ip, Username, Password))
                 return true;
             else
                 return false;

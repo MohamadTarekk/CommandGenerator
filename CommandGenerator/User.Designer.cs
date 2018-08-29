@@ -435,7 +435,7 @@
         private System.Windows.Forms.DataGridView CmdGrid;
         private System.Windows.Forms.Button BrowzeBtn;
         private System.Windows.Forms.ComboBox SheetsCB;
-        private System.Windows.Forms.DataGridViewButtonColumn Refresh;
+        private new System.Windows.Forms.DataGridViewButtonColumn Refresh;
         private CommandGenerator.CircularButton btnAdd;
         private CommandGenerator.CircularButton circularButton1;
         private System.Windows.Forms.Button ClearBtn;

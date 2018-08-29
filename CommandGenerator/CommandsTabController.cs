@@ -40,7 +40,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex);
+                FileParser.LogException(ex.Message);
                 return null;
             }
         }

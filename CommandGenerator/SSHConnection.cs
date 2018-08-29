@@ -1,6 +1,5 @@
 ﻿using Renci.SshNet;
 using System;
-using System.IO;
 
 namespace CommandGenerator
 {

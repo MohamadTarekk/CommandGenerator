@@ -354,21 +354,21 @@ namespace CommandGenerator
                 ExcuteBtn.Enabled = true;
         }
 
-        private void btnAddUser_Click(object sender, EventArgs e)
+        private void BtnAddUser_Click(object sender, EventArgs e)
         {
             AddingUserForm auf = new AddingUserForm(usersGrid);
             auf.ShowDialog();
             auf.Dispose();
         }
 
-        private void btnAddNetwork_Click(object sender, EventArgs e)
+        private void BtnAddNetwork_Click(object sender, EventArgs e)
         {
             AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
             anf.ShowDialog();
             anf.Dispose();
         }
 
-        private void cellPaint(string imageName, DataGridViewCellPaintingEventArgs e)
+        private void CellPaint(string imageName, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0)
                 return;
@@ -395,17 +395,17 @@ namespace CommandGenerator
             }
         }
 
-        private void usersGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void UsersGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            cellPaint("removeIcon", e);
+            CellPaint("removeIcon", e);
         }
 
         private void CmdGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            cellPaint("refreshIcon", e);
+            CellPaint("refreshIcon", e);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
             anf.ShowDialog();

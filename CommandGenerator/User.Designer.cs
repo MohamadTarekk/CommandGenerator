@@ -307,7 +307,7 @@
             this.btnAddUser.TabIndex = 14;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = false;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            this.btnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // pictureBox1
             // 
@@ -355,7 +355,7 @@
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellContentClick);
             this.usersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellDoubleClick);
             this.usersGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellEndEdit);
-            this.usersGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.usersGrid_CellPainting);
+            this.usersGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.UsersGrid_CellPainting);
             // 
             // Remove
             // 
@@ -413,7 +413,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Add Network";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // groupBox1
             // 
@@ -449,7 +449,7 @@
             this.NetworkGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentClick);
             this.NetworkGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentDoubleClick);
             this.NetworkGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellEndEdit);
-            this.NetworkGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.usersGrid_CellPainting);
+            this.NetworkGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.UsersGrid_CellPainting);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -535,7 +535,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.DataGridViewButtonColumn Refresh;
+        private new System.Windows.Forms.DataGridViewButtonColumn Refresh;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.PictureBox pictureBox8;

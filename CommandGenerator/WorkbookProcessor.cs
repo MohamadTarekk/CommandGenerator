@@ -100,8 +100,15 @@ namespace CommandGenerator
 
         public void RefreshConnection(string name)
         {
-            int position = networkElements.IndexOf(name);
-            networkElementsStatus[position] = dataBaseReference.CheckConn1(name);
+            try
+            {
+                int position = networkElements.IndexOf(name);
+                networkElementsStatus[position] = dataBaseReference.CheckConn1(name);
+            }
+            catch(Exception ex)
+            {
+                FileParser.LogException(ex.Message);
+            }
         }
 
         public void ExcuteCommands()

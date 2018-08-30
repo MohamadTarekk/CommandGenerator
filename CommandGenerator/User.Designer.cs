@@ -258,7 +258,7 @@
             this.btnAdd.Size = new System.Drawing.Size(52, 51);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click_1);
             // 
             // usersGrid
             // 
@@ -279,9 +279,9 @@
             this.usersGrid.RowTemplate.Height = 24;
             this.usersGrid.Size = new System.Drawing.Size(655, 657);
             this.usersGrid.TabIndex = 0;
-            this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersGrid_CellContentClick);
-            this.usersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersGrid_CellDoubleClick);
-            this.usersGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersGrid_CellEndEdit);
+            this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellContentClick);
+            this.usersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellDoubleClick);
+            this.usersGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellEndEdit);
             // 
             // Remove
             // 
@@ -335,7 +335,7 @@
             this.circularButton1.Size = new System.Drawing.Size(52, 51);
             this.circularButton1.TabIndex = 1;
             this.circularButton1.UseVisualStyleBackColor = false;
-            this.circularButton1.Click += new System.EventHandler(this.circularButton1_Click);
+            this.circularButton1.Click += new System.EventHandler(this.CircularButton1_Click);
             // 
             // NetworkGrid
             // 

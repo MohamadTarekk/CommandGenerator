@@ -14,11 +14,6 @@ namespace CommandGenerator
         public User()
         {
             InitializeComponent();
-            CommandsTabController c = new CommandsTabController();
-            if (c.GetSheet(0) == null)
-            {
-                SheetsCB.Items.Add("null");
-            }
         }
 
         // Global Variables
@@ -41,9 +36,11 @@ namespace CommandGenerator
         {
             SQLiteConnection myconnection = new SQLiteConnection(path);
             myconnection.Open();
-            SQLiteCommand cmd = new SQLiteCommand();
-            cmd.Connection = myconnection;
-            cmd.CommandText = q.ShowUsers();
+            SQLiteCommand cmd = new SQLiteCommand
+            {
+                Connection = myconnection,
+                CommandText = q.ShowUsers()
+            };
             using (SQLiteDataReader sdr = cmd.ExecuteReader())
             {
                 DataTable dt = new DataTable();
@@ -53,9 +50,11 @@ namespace CommandGenerator
                 usersGrid.DataSource = dt;
             }
             myconnection.Open();
-            SQLiteCommand cmd1 = new SQLiteCommand();
-            cmd1.Connection = myconnection;
-            cmd1.CommandText = q.ShowNetworks();
+            SQLiteCommand cmd1 = new SQLiteCommand
+            {
+                Connection = myconnection,
+                CommandText = q.ShowNetworks()
+            };
             using (SQLiteDataReader sdr1 = cmd1.ExecuteReader())
             {
                 DataTable dt1 = new DataTable();
@@ -75,7 +74,7 @@ namespace CommandGenerator
             Application.Exit();
         }
 
-        private void refreshUsers()
+        private void RefreshUsers()
         {
             SQLiteConnection myconn = new SQLiteConnection(path);
             myconn.Open();
@@ -95,7 +94,7 @@ namespace CommandGenerator
             myconn.Close();
         }
 
-        private void usersGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void UsersGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
@@ -110,21 +109,21 @@ namespace CommandGenerator
                         cmd.Parameters.Add(new SQLiteParameter("@username", str));
                         cmd.ExecuteNonQuery();
                         myconnection.Close();
-                        refreshUsers();
+                        RefreshUsers();
                     }
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
             }
         }
 
-        private void btnAdd_Click_1(object sender, EventArgs e)
+        private void BtnAdd_Click_1(object sender, EventArgs e)
         {
             AddingUserForm auf = new AddingUserForm(usersGrid);
             auf.ShowDialog();
             auf.Dispose();
         }
 
-        private void usersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void UsersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1)
             {
@@ -137,7 +136,7 @@ namespace CommandGenerator
             }
         }
 
-        private bool checkUsername(string username)
+        private bool CheckUsername(string username)
         {
             SQLiteConnection myconnection = new SQLiteConnection(path);
             myconnection.Open();
@@ -152,13 +151,13 @@ namespace CommandGenerator
             return true;
         }
 
-        private void usersGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void UsersGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string newUsername = usersGrid.Rows[row].Cells[2].Value.ToString();
             string newPassword = usersGrid.Rows[row].Cells[3].Value.ToString();
             // MessageBox.Show("new username " + newUsername + " oldUsername " + oldUsername);
             // MessageBox.Show("new password " + newPassword + " oldpassword " + oldPassword);
-            if (editFlag && (!checkUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
+            if (editFlag && (!CheckUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
                     (MessageBox.Show("Are you sure you want to save edits?",
                         "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
@@ -173,7 +172,7 @@ namespace CommandGenerator
                 cmd.ExecuteNonQuery();
                 myconnection.Close();
             }
-            refreshUsers();
+            RefreshUsers();
         }
 
         //* Encryption and Decryption Functions
@@ -199,7 +198,7 @@ namespace CommandGenerator
             return clearText;
         }
 
-        private void circularButton1_Click(object sender, EventArgs e)
+        private void CircularButton1_Click(object sender, EventArgs e)
         {
             AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
             anf.ShowDialog();
@@ -363,6 +362,7 @@ namespace CommandGenerator
 
         private void ClearBtn_Click(object sender, EventArgs e)
         {
+            //FileParser.CreateZip();
             commandsTabController.ClearGrid();
             CmdGrid.DataSource = null;
             SheetsCB.Text = null;

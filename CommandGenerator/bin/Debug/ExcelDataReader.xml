@@ -1269,7 +1269,7 @@
             The ExcelReader Factory
             </summary>
         </member>
-        <member name="M:ExcelDataReader.ExcelReaderFactory.CreateReader(System.IO.Stream,ExcelDataReader.ExcelReaderConfiguration,System.Boolean)">
+        <member name="M:ExcelDataReader.ExcelReaderFactory.CreateReader(System.IO.Stream,ExcelDataReader.ExcelReaderConfiguration)">
             <summary>
             Creates an instance of <see cref="T:ExcelDataReader.ExcelBinaryReader"/> or <see cref="T:ExcelDataReader.ExcelOpenXmlReader"/>
             </summary>
@@ -1277,7 +1277,7 @@
             <param name="configuration">The configuration object.</param>
             <returns>The excel data reader.</returns>
         </member>
-        <member name="M:ExcelDataReader.ExcelReaderFactory.CreateBinaryReader(System.IO.Stream,ExcelDataReader.ExcelReaderConfiguration,System.Boolean)">
+        <member name="M:ExcelDataReader.ExcelReaderFactory.CreateBinaryReader(System.IO.Stream,ExcelDataReader.ExcelReaderConfiguration)">
             <summary>
             Creates an instance of <see cref="T:ExcelDataReader.ExcelBinaryReader"/>
             </summary>

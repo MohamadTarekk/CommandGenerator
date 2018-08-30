@@ -26,7 +26,6 @@ namespace CommandGenerator
                 User user = new User();
                 user.Show();
                 this.Hide();
-
             }
             else
             {
@@ -71,7 +70,7 @@ namespace CommandGenerator
 
         }
 
-        private void exitPnlAddNetwork_Click(object sender, EventArgs e)
+        private void ExitPnlAddNetwork_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -103,7 +102,7 @@ namespace CommandGenerator
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        private void pnlMoveable_MouseDown(object sender, MouseEventArgs e)
+        private void PnlMoveable_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -118,7 +117,7 @@ namespace CommandGenerator
             this.ActiveControl = label1;
         }
 
-        private void txt_Username_Enter(object sender, EventArgs e)
+        private void Txt_Username_Enter(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.FromArgb(26, 73, 148);
             if (txt_Username.Text == "Username" && !usernameEntered)
@@ -129,7 +128,7 @@ namespace CommandGenerator
             }
         }
 
-        private void txt_Username_Leave(object sender, EventArgs e)
+        private void Txt_Username_Leave(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.Transparent;
             if (txt_Username.Text == "")
@@ -140,7 +139,7 @@ namespace CommandGenerator
             }
         }
 
-        private void txt_Password_Enter(object sender, EventArgs e)
+        private void Txt_Password_Enter(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.FromArgb(26, 73, 148);
             if (txt_Password.Text == "Password" && !txt_Password.UseSystemPasswordChar)
@@ -151,7 +150,7 @@ namespace CommandGenerator
             }
         }
 
-        private void txt_Password_Leave(object sender, EventArgs e)
+        private void Txt_Password_Leave(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.Transparent;
             if (txt_Password.Text == "")
@@ -162,12 +161,12 @@ namespace CommandGenerator
             }
         }
 
-        private void exitPnlAddNetwork_MouseHover(object sender, EventArgs e)
+        private void ExitPnlAddNetwork_MouseHover(object sender, EventArgs e)
         {
             exitPnlAddNetwork.ForeColor = Color.Silver;
         }
 
-        private void exitPnlAddNetwork_MouseLeave(object sender, EventArgs e)
+        private void ExitPnlAddNetwork_MouseLeave(object sender, EventArgs e)
         {
             exitPnlAddNetwork.ForeColor = Color.DimGray;
         }
@@ -177,7 +176,7 @@ namespace CommandGenerator
 
         }
 
-        private void txt_Username_KeyDown(object sender, KeyEventArgs e)
+        private void Txt_Username_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {

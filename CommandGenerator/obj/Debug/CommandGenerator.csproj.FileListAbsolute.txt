@@ -188,4 +188,5 @@ D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\Co
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.exe
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
-D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
+D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
+D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml

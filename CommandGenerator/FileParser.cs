@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Ionic.Zip; 
 
 namespace CommandGenerator
 {
@@ -72,6 +73,19 @@ namespace CommandGenerator
             StreamWriter w = File.AppendText(Filep);
             w.Dispose();
             string file = Path.Combine(path, Filep);
+        }
+
+        public static void CreateZip()
+        {
+            using (var zip = new Ionic.Zip.ZipFile())
+            {
+                zip.AddDirectory(Environment.GetFolderPath(
+              System.Environment.SpecialFolder.DesktopDirectory) + "\\code");
+                FileStream x = File.Create("D:\\Visual Studio\\CommandGenerator\\MyFile.zip");
+                zip.Save(x);
+                x.Close();
+                zip.Dispose();
+            }
         }
     }
 }

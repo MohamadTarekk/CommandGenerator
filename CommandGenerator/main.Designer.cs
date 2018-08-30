@@ -61,7 +61,7 @@
             this.pnlMoveable.Name = "pnlMoveable";
             this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
             this.pnlMoveable.TabIndex = 6;
-            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
+            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlMoveable_MouseDown);
             // 
             // panel5
             // 
@@ -96,9 +96,9 @@
             this.exitPnlAddNetwork.Size = new System.Drawing.Size(31, 37);
             this.exitPnlAddNetwork.TabIndex = 0;
             this.exitPnlAddNetwork.Text = "x";
-            this.exitPnlAddNetwork.Click += new System.EventHandler(this.exitPnlAddNetwork_Click);
-            this.exitPnlAddNetwork.MouseLeave += new System.EventHandler(this.exitPnlAddNetwork_MouseLeave);
-            this.exitPnlAddNetwork.MouseHover += new System.EventHandler(this.exitPnlAddNetwork_MouseHover);
+            this.exitPnlAddNetwork.Click += new System.EventHandler(this.ExitPnlAddNetwork_Click);
+            this.exitPnlAddNetwork.MouseLeave += new System.EventHandler(this.ExitPnlAddNetwork_MouseLeave);
+            this.exitPnlAddNetwork.MouseHover += new System.EventHandler(this.ExitPnlAddNetwork_MouseHover);
             // 
             // flowLayoutPanel1
             // 
@@ -107,7 +107,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
             this.flowLayoutPanel1.TabIndex = 20;
-            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlMoveable_MouseDown);
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PnlMoveable_MouseDown);
             // 
             // pnlTbPassword
             // 
@@ -146,9 +146,9 @@
             this.txt_Password.Size = new System.Drawing.Size(325, 32);
             this.txt_Password.TabIndex = 4;
             this.txt_Password.Text = "Password";
-            this.txt_Password.Enter += new System.EventHandler(this.txt_Password_Enter);
-            this.txt_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Username_KeyDown);
-            this.txt_Password.Leave += new System.EventHandler(this.txt_Password_Leave);
+            this.txt_Password.Enter += new System.EventHandler(this.Txt_Password_Enter);
+            this.txt_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Username_KeyDown);
+            this.txt_Password.Leave += new System.EventHandler(this.Txt_Password_Leave);
             // 
             // Log
             // 
@@ -185,9 +185,9 @@
             this.txt_Username.Size = new System.Drawing.Size(325, 32);
             this.txt_Username.TabIndex = 3;
             this.txt_Username.Text = "Username";
-            this.txt_Username.Enter += new System.EventHandler(this.txt_Username_Enter);
-            this.txt_Username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Username_KeyDown);
-            this.txt_Username.Leave += new System.EventHandler(this.txt_Username_Leave);
+            this.txt_Username.Enter += new System.EventHandler(this.Txt_Username_Enter);
+            this.txt_Username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Username_KeyDown);
+            this.txt_Username.Leave += new System.EventHandler(this.Txt_Username_Leave);
             // 
             // label1
             // 

@@ -77,7 +77,7 @@
             this.pnlMoveable.Name = "pnlMoveable";
             this.pnlMoveable.Size = new System.Drawing.Size(299, 30);
             this.pnlMoveable.TabIndex = 6;
-            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
+            this.pnlMoveable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel7_MouseDown);
             // 
             // pictureBox1
             // 
@@ -123,9 +123,9 @@
             this.exitPnlAddUser.Size = new System.Drawing.Size(31, 37);
             this.exitPnlAddUser.TabIndex = 0;
             this.exitPnlAddUser.Text = "x";
-            this.exitPnlAddUser.Click += new System.EventHandler(this.exitPnlAddUser_Click);
-            this.exitPnlAddUser.MouseLeave += new System.EventHandler(this.exitPnlAddUser_MouseLeave);
-            this.exitPnlAddUser.MouseHover += new System.EventHandler(this.exitPnlAddUser_MouseHover);
+            this.exitPnlAddUser.Click += new System.EventHandler(this.ExitPnlAddUser_Click);
+            this.exitPnlAddUser.MouseLeave += new System.EventHandler(this.ExitPnlAddUser_MouseLeave);
+            this.exitPnlAddUser.MouseHover += new System.EventHandler(this.ExitPnlAddUser_MouseHover);
             // 
             // flowLayoutPanel1
             // 
@@ -135,8 +135,8 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(410, 30);
             this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.FlowLayoutPanel1_Paint);
+            this.flowLayoutPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel7_MouseDown);
             // 
             // pnlTbConfirmPassword
             // 
@@ -175,7 +175,7 @@
             this.btnPerformAdd.TabIndex = 4;
             this.btnPerformAdd.Text = "Add";
             this.btnPerformAdd.UseVisualStyleBackColor = false;
-            this.btnPerformAdd.Click += new System.EventHandler(this.btnPerformAdd_Click);
+            this.btnPerformAdd.Click += new System.EventHandler(this.BtnPerformAdd_Click);
             // 
             // pictureBox6
             // 
@@ -198,9 +198,9 @@
             this.tbConfirmPassword.Size = new System.Drawing.Size(325, 32);
             this.tbConfirmPassword.TabIndex = 3;
             this.tbConfirmPassword.Text = "Confirm Password";
-            this.tbConfirmPassword.Enter += new System.EventHandler(this.tbConfirmPassword_Enter);
-            this.tbConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
-            this.tbConfirmPassword.Leave += new System.EventHandler(this.tbConfirmPassword_Leave);
+            this.tbConfirmPassword.Enter += new System.EventHandler(this.TbConfirmPassword_Enter);
+            this.tbConfirmPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbUsername_KeyDown);
+            this.tbConfirmPassword.Leave += new System.EventHandler(this.TbConfirmPassword_Leave);
             // 
             // pictureBox5
             // 
@@ -223,9 +223,9 @@
             this.tbPassword.Size = new System.Drawing.Size(325, 32);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.Text = "Password";
-            this.tbPassword.Enter += new System.EventHandler(this.tbPassword_Enter);
-            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
-            this.tbPassword.Leave += new System.EventHandler(this.tbPassword_Leave);
+            this.tbPassword.Enter += new System.EventHandler(this.TbPassword_Enter);
+            this.tbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbUsername_KeyDown);
+            this.tbPassword.Leave += new System.EventHandler(this.TbPassword_Leave);
             // 
             // pictureBox4
             // 
@@ -248,9 +248,9 @@
             this.tbUsername.Size = new System.Drawing.Size(325, 32);
             this.tbUsername.TabIndex = 1;
             this.tbUsername.Text = "Username";
-            this.tbUsername.Enter += new System.EventHandler(this.tbUsername_Enter);
-            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbUsername_KeyDown);
-            this.tbUsername.Leave += new System.EventHandler(this.tbUsername_Leave);
+            this.tbUsername.Enter += new System.EventHandler(this.TbUsername_Enter);
+            this.tbUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TbUsername_KeyDown);
+            this.tbUsername.Leave += new System.EventHandler(this.TbUsername_Leave);
             // 
             // label1
             // 

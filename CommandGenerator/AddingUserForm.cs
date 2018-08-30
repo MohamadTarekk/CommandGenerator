@@ -39,7 +39,7 @@ namespace CommandGenerator
             this.usersGrid = usersGrid;
         }
 
-        public bool checkPnlAddUser()
+        public bool CheckPnlAddUser()
         {
             if (tbUsername.Text != "" && tbPassword.Text != "" && tbConfirmPassword.Text != ""
                 && tbPassword.Text == tbConfirmPassword.Text && usernameEntered
@@ -48,7 +48,7 @@ namespace CommandGenerator
             return false;
         }
 
-        public void clearPnlAddUser()
+        public void ClearPnlAddUser()
         {
             tbUsername.Text = "Username";
             tbPassword.Text = "Password";
@@ -58,7 +58,7 @@ namespace CommandGenerator
             tbConfirmPassword.UseSystemPasswordChar = false;
         }
 
-        private void tbUsername_Enter(object sender, EventArgs e)
+        private void TbUsername_Enter(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.FromArgb(26, 73, 148);
             if (tbUsername.Text == "Username" && !usernameEntered)
@@ -69,7 +69,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbUsername_Leave(object sender, EventArgs e)
+        private void TbUsername_Leave(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.Transparent;
             if (tbUsername.Text == "")
@@ -80,7 +80,7 @@ namespace CommandGenerator
             }
         }
 
-        private void refreshUsers()
+        private void RefreshUsers()
         {
             SQLiteConnection myconn = new SQLiteConnection(pathh);
             myconn.Open();
@@ -100,11 +100,11 @@ namespace CommandGenerator
             myconn.Close();
         }
 
-        private void btnPerformAdd_Click(object sender, EventArgs e)
+        private void BtnPerformAdd_Click(object sender, EventArgs e)
         {
             string username = tbUsername.Text;
             string password = User.Encrypt(tbPassword.Text);
-            if (checkPnlAddUser())
+            if (CheckPnlAddUser())
             {
                
                 SQLiteConnection myconnection = new SQLiteConnection(pathh);
@@ -120,8 +120,8 @@ namespace CommandGenerator
                     cmd.Parameters.Add(new SQLiteParameter("@password", password));
                     cmd.ExecuteNonQuery();
                     myconnection.Close();
-                    refreshUsers();
-                    clearPnlAddUser();
+                    RefreshUsers();
+                    ClearPnlAddUser();
                     this.Hide();
                 }
                 else
@@ -140,7 +140,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbPassword_Enter(object sender, EventArgs e)
+        private void TbPassword_Enter(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.FromArgb(26, 73, 148);
             if (tbPassword.Text == "Password" && !tbPassword.UseSystemPasswordChar)
@@ -151,7 +151,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbPassword_Leave(object sender, EventArgs e)
+        private void TbPassword_Leave(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.Transparent;
             if (tbPassword.Text == "")
@@ -162,7 +162,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbConfirmPassword_Enter(object sender, EventArgs e)
+        private void TbConfirmPassword_Enter(object sender, EventArgs e)
         {
             pnlTbConfirmPassword.BackColor = Color.FromArgb(26, 73, 148);
             if (tbConfirmPassword.Text == "Confirm Password" && !tbConfirmPassword.UseSystemPasswordChar)
@@ -173,7 +173,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbConfirmPassword_Leave(object sender, EventArgs e)
+        private void TbConfirmPassword_Leave(object sender, EventArgs e)
         {
             pnlTbConfirmPassword.BackColor = Color.Transparent;
             if (tbConfirmPassword.Text == "")
@@ -184,18 +184,18 @@ namespace CommandGenerator
             }
         }
 
-        private void exitPnlAddUser_Click(object sender, EventArgs e)
+        private void ExitPnlAddUser_Click(object sender, EventArgs e)
         {
-            clearPnlAddUser();
+            ClearPnlAddUser();
             this.Hide();
         }
 
-        private void exitPnlAddUser_MouseHover(object sender, EventArgs e)
+        private void ExitPnlAddUser_MouseHover(object sender, EventArgs e)
         {
             exitPnlAddUser.ForeColor = Color.Silver;
         }
 
-        private void exitPnlAddUser_MouseLeave(object sender, EventArgs e)
+        private void ExitPnlAddUser_MouseLeave(object sender, EventArgs e)
         {
             exitPnlAddUser.ForeColor = Color.DimGray;
         }
@@ -213,7 +213,7 @@ namespace CommandGenerator
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        private void panel7_MouseDown(object sender, MouseEventArgs e)
+        private void Panel7_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -222,12 +222,12 @@ namespace CommandGenerator
             }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
         //*/
-        private void tbUsername_KeyDown(object sender, KeyEventArgs e)
+        private void TbUsername_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {

@@ -40,7 +40,7 @@ namespace CommandGenerator
             this.NetworkGrid = NetworkGrid;
         }
 
-        public bool checkPnlAddNetwork()
+        public bool CheckPnlAddNetwork()
         {
             if (tbUsername.Text != "" && tbPassword.Text != "" && tbIP.Text != "" && tbNetwork.Text != ""
                 && usernameEntered && IPEntered && NetworkEntered && tbPassword.UseSystemPasswordChar)
@@ -48,7 +48,7 @@ namespace CommandGenerator
             return false;
         }
 
-        public void clearPnlAddNetwork()
+        public void ClearPnlAddNetwork()
         {
             tbIP.Text = "IP";
             tbNetwork.Text = "Network Name";
@@ -60,13 +60,13 @@ namespace CommandGenerator
             tbPassword.UseSystemPasswordChar = false;
         }
 
-        private void exitPnlAddUser_Click(object sender, EventArgs e)
+        private void ExitPnlAddUser_Click(object sender, EventArgs e)
         {
-            clearPnlAddNetwork();
+            ClearPnlAddNetwork();
             this.Hide();
         }
 
-        private void tbIP_Enter(object sender, EventArgs e)
+        private void TbIP_Enter(object sender, EventArgs e)
         {
             pnlTbIP.BackColor = Color.FromArgb(26, 73, 148);
             if (tbIP.Text == "IP" && !IPEntered)
@@ -77,7 +77,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbIP_Leave(object sender, EventArgs e)
+        private void TbIP_Leave(object sender, EventArgs e)
         {
             pnlTbIP.BackColor = Color.Transparent;
             if (tbIP.Text == "")
@@ -88,7 +88,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbNetwork_Enter(object sender, EventArgs e)
+        private void TbNetwork_Enter(object sender, EventArgs e)
         {
             pnlTbNetwork.BackColor = Color.FromArgb(26, 73, 148);
             if (tbNetwork.Text == "Network Name" && !NetworkEntered)
@@ -99,7 +99,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbNetwork_Leave(object sender, EventArgs e)
+        private void TbNetwork_Leave(object sender, EventArgs e)
         {
             pnlTbNetwork.BackColor = Color.Transparent;
             if (tbNetwork.Text == "")
@@ -110,7 +110,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbUsername_Enter(object sender, EventArgs e)
+        private void TbUsername_Enter(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.FromArgb(26, 73, 148);
             if (tbUsername.Text == "Username" && !usernameEntered)
@@ -121,7 +121,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbUsername_Leave(object sender, EventArgs e)
+        private void TbUsername_Leave(object sender, EventArgs e)
         {
             pnlTbUsername.BackColor = Color.Transparent;
             if (tbUsername.Text == "")
@@ -132,7 +132,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbPassword_Enter(object sender, EventArgs e)
+        private void TbPassword_Enter(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.FromArgb(26, 73, 148);
             if (tbPassword.Text == "Password" && !tbPassword.UseSystemPasswordChar)
@@ -143,7 +143,7 @@ namespace CommandGenerator
             }
         }
 
-        private void tbPassword_Leave(object sender, EventArgs e)
+        private void TbPassword_Leave(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.Transparent;
             if (tbPassword.Text == "")
@@ -154,13 +154,13 @@ namespace CommandGenerator
             }
         }
 
-        private void btnPerformAdd_Click(object sender, EventArgs e)
+        private void BtnPerformAdd_Click(object sender, EventArgs e)
         {
             string IP = tbIP.Text;
             string network = tbNetwork.Text;
             string username = tbUsername.Text;
             string password = User.Encrypt(tbPassword.Text);
-            if (checkPnlAddNetwork())
+            if (CheckPnlAddNetwork())
             {
                 if (AddingNetworks(username, password, IP, network))
                 {
@@ -251,7 +251,7 @@ namespace CommandGenerator
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
-        private void pnlMoveable_MouseDown(object sender, MouseEventArgs e)
+        private void PnlMoveable_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -260,13 +260,13 @@ namespace CommandGenerator
             }
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void FlowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
         //*/
 
-        private void tbIP_KeyDown(object sender, KeyEventArgs e)
+        private void TbIP_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {

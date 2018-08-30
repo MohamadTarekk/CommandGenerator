@@ -162,16 +162,22 @@ C:\Users\LENOVO\Desktop\CommandGenerator-master\CommandGenerator\obj\Debug\Comma
 C:\Users\LENOVO\Desktop\CommandGenerator-master\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
 C:\Users\LENOVO\Desktop\CommandGenerator-master\CommandGenerator\obj\Debug\CommandGenerator.exe
 C:\Users\LENOVO\Desktop\CommandGenerator-master\CommandGenerator\obj\Debug\CommandGenerator.pdb
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe.config
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.pdb
+D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\ExcelDataReader.DataSet.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\ExcelDataReader.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\ICSharpCode.SharpZipLib.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Renci.SshNet.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\ExcelDataReader.xml
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\ExcelDataReader.DataSet.xml
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Renci.SshNet.xml
@@ -187,9 +193,3 @@ D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\Co
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csproj.CopyComplete
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.exe
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
-D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
-D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache

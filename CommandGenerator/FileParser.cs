@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Ionic.Zip; 
+using System.Windows.Forms;
 
 namespace CommandGenerator
 {
@@ -9,13 +9,45 @@ namespace CommandGenerator
         public static int counter = 0;
         public static int Ncounter = 0;
 
+        public static string[] s = { "\\bin" };
+        public static string LogsDirectory =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Logs";
+        public static string LogsPath = Path.GetFullPath(LogsDirectory);
+
+        public static string OutputDirectory =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Result";
+        public static string OutputPath = Path.GetFullPath(OutputDirectory);
+
+
+
+        public static string SavingPath = "";
+
+        public static void LogException(string error)
+        {
+            try
+            {
+                if (!Directory.Exists(LogsPath))
+                    Directory.CreateDirectory(LogsPath);
+                string Filep = "Error_" + counter + ".txt";
+                string lpath = LogsPath + "\\" + Filep;
+                StreamWriter w = File.AppendText(Filep);
+                w.Dispose();
+                string file = Path.Combine(LogsPath, Filep);
+                File.WriteAllText(file, error);
+                counter++;
+            }
+            catch (Exception ex)
+            {
+                //FileParser.LogException(ex.Message);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         public static void SaveResult(string name, string IP, string commandText, string result)
         {
             try
             {
-                string strPath = Environment.GetFolderPath(
-               System.Environment.SpecialFolder.DesktopDirectory);
-                string path = Path.GetFullPath(strPath) + "\\networkelements";
+                string path = Path.GetFullPath(OutputPath);
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 path += "\\" + name;
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
@@ -24,9 +56,9 @@ namespace CommandGenerator
                 StreamWriter ws = File.AppendText(Filep);
                 ws.Dispose();
                 string file = Path.Combine(path, Filep);
-                string text = name + Environment.NewLine + IP + Environment.NewLine + commandText + Environment.NewLine + result;
+                string text = name + Environment.NewLine + IP + Environment.NewLine + commandText + Environment.NewLine + result + Environment.NewLine + Environment.NewLine;
                 File.WriteAllText(file, text);
-                string alltxt = path + "AllCommands.txt";
+                string alltxt = OutputPath + "\\AllCommands.txt";
                 using (StreamWriter w = File.AppendText(alltxt))
                 {
                     w.WriteLine(text);
@@ -39,45 +71,38 @@ namespace CommandGenerator
             }
         }
 
-        public static void LogException(string error)
-        {
-            try
-            { 
-                string strPath = Environment.GetFolderPath(
-                System.Environment.SpecialFolder.DesktopDirectory);
-                string path = Path.GetFullPath(strPath) + "\\Logs";
-                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                string Filep = "Error_" + counter + ".txt";
-                string lpath = path + "\\" + Filep;
-                StreamWriter w = File.AppendText(Filep);
-                w.Dispose();
-                string file = Path.Combine(path, Filep);
-                File.WriteAllText(file, error);
-                counter++;
-            }
-            catch (Exception ex)
-            {
-                //FileParser.LogException(ex.Message);
-                Console.WriteLine(ex.Message);
-            }
-        }
-
         public static void CreateDirectory()
         {
-            string strPath = Environment.GetFolderPath(
-              System.Environment.SpecialFolder.DesktopDirectory);
-            string path = Path.GetFullPath(strPath) + "\\Netelements";
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            if (!Directory.Exists(OutputPath))
+                Directory.CreateDirectory(OutputPath);
             string Filep = "AllCommands.txt";
-            string lpath = path + "\\" + Filep;
+            string lpath = LogsPath + "\\" + Filep;
             StreamWriter w = File.AppendText(Filep);
             w.Dispose();
-            string file = Path.Combine(path, Filep);
+            string file = Path.Combine(OutputPath, Filep);
         }
 
         public static void CreateZip()
         {
             using (var zip = new Ionic.Zip.ZipFile())
+            {
+                using (FileStream fs = File.Create(SavingPath))
+                {
+                    zip.AddDirectory(OutputPath);
+                    zip.Save(fs);
+                }
+            }
+            try
+            {
+                var dir = new DirectoryInfo(OutputPath);
+                dir.Attributes = dir.Attributes & ~FileAttributes.ReadOnly;
+                dir.Delete(true);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            /*using (var zip = new Ionic.Zip.ZipFile())
             {
                 zip.AddDirectory(Environment.GetFolderPath(
               System.Environment.SpecialFolder.DesktopDirectory) + "\\code");
@@ -86,6 +111,25 @@ namespace CommandGenerator
                 x.Close();
                 zip.Dispose();
             }
+            */
+        }
+
+        public static bool SetSavingPath()
+        {
+            SaveFileDialog savefile = new SaveFileDialog
+            {
+                // set a default file name
+                FileName = "Result.zip",
+                // set filters - this can be done in properties as well
+                Filter = "Zip Files|*.zip;*.rar"
+            };
+
+            if (savefile.ShowDialog() == DialogResult.OK)
+            {
+                SavingPath = savefile.FileName;
+                return true;
+            }
+            return false;
         }
     }
 }

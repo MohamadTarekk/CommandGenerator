@@ -29,7 +29,12 @@ namespace CommandGenerator
 
         public void ExcuteButtonPressed()
         {
-            workbookProcessor.ExcuteCommands();
+            if (FileParser.SetSavingPath())
+            {
+                FileParser.CreateDirectory();
+                workbookProcessor.ExcuteCommands();
+                FileParser.CreateZip();
+            }
         }
 
         public DataTable GetSheet(int tableName)

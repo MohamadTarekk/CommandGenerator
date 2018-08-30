@@ -186,6 +186,7 @@
             this.ExcuteBtn.TabIndex = 11;
             this.ExcuteBtn.Text = "Excute";
             this.ExcuteBtn.UseVisualStyleBackColor = false;
+            this.ExcuteBtn.Click += new System.EventHandler(this.ExcuteBtn_Click);
             // 
             // groupBox2
             // 

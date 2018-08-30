@@ -41,8 +41,12 @@ namespace CommandGenerator
 
                     client.Connect();
                     var cmd = client.RunCommand(command);
-                    FileParser.CreateDirectory();
-                    FileParser.SaveResult(name, IP, cmd.CommandText, cmd.Result);
+                    if (FileParser.SetSavingPath())
+                    {
+                        FileParser.CreateDirectory();
+                        FileParser.SaveResult(name, IP, cmd.CommandText, cmd.Result);
+                        FileParser.CreateZip();
+                    }
                     client.Disconnect();
                     return true;
                 }

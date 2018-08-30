@@ -212,6 +212,13 @@ namespace CommandGenerator
             return cipherText;
         }
 
+        private void BtnAddUser_Click(object sender, EventArgs e)
+        {
+            AddingUserForm auf = new AddingUserForm(usersGrid);
+            auf.ShowDialog();
+            auf.Dispose();
+        }
+
         //////////--------------------Networks Tab--------------------\\\\\\\\\\
 
         private void NetworkGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -303,6 +310,20 @@ namespace CommandGenerator
             ListingNetworks();
         }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
+            anf.ShowDialog();
+            anf.Dispose();
+        }
+
+        private void BtnAddNetwork_Click(object sender, EventArgs e)
+        {
+            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
+            anf.ShowDialog();
+            anf.Dispose();
+        }
+
         //////////--------------------Commands Tab--------------------\\\\\\\\\\
 
         CommandsTabController commandsTabController = new CommandsTabController();
@@ -354,19 +375,37 @@ namespace CommandGenerator
                 ExcuteBtn.Enabled = true;
         }
 
-        private void BtnAddUser_Click(object sender, EventArgs e)
+        private void ExcuteBtn_Click(object sender, EventArgs e)
         {
-            AddingUserForm auf = new AddingUserForm(usersGrid);
-            auf.ShowDialog();
-            auf.Dispose();
+            commandsTabController.ExcuteButtonPressed();
+            RefreshCmdGrid();
         }
 
-        private void BtnAddNetwork_Click(object sender, EventArgs e)
+        private void ClearBtn_Click(object sender, EventArgs e)
         {
-            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
-            anf.ShowDialog();
-            anf.Dispose();
+            commandsTabController.ClearGrid();
+            CmdGrid.DataSource = null;
+            SheetsCB.Text = null;
+            SheetsCB.Items.Clear();
+            ExcuteBtn.Enabled = false;
+            
+            ///FOR TESTING THE OUTPUT OF EXCUTION SAVING
+            /*if (FileParser.SetSavingPath())
+            {
+                FileParser.CreateDirectory();
+                FileParser.SaveResult("name", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("123", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("asd", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("name", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("why do this", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("?????", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("123", "IP", "Apply this command", "This is the output");
+                FileParser.SaveResult("asd", "IP", "Apply this command", "This is the output");
+                FileParser.CreateZip();
+            }*/
         }
+
+        //////////--------------------COMMON FUNCTIONS--------------------\\\\\\\\\\
 
         private void CellPaint(string imageName, DataGridViewCellPaintingEventArgs e)
         {
@@ -403,29 +442,6 @@ namespace CommandGenerator
         private void CmdGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             CellPaint("refreshIcon", e);
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
-            anf.ShowDialog();
-            anf.Dispose();
-        }
-
-        private void ClearBtn_Click(object sender, EventArgs e)
-        {
-            //FileParser.CreateZip();
-            commandsTabController.ClearGrid();
-            CmdGrid.DataSource = null;
-            SheetsCB.Text = null;
-            SheetsCB.Items.Clear();
-            ExcuteBtn.Enabled = false;
-        }
-
-        private void ExcuteBtn_Click(object sender, EventArgs e)
-        {
-            commandsTabController.ExcuteButtonPressed();
-            RefreshCmdGrid();
         }
     }
 }

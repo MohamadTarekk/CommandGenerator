@@ -18,7 +18,8 @@ namespace CommandGenerator
 
         // Global Variables
         public static int row;
-        private bool editFlag = false;
+        private bool editUserFlag;
+        private bool editNetworkFlag;
         public static string oldUsername, oldPassword;
         public static string oldname,oldpass;
 
@@ -110,29 +111,22 @@ namespace CommandGenerator
                         cmd.ExecuteNonQuery();
                         myconnection.Close();
                         RefreshUsers();
-                    }
+                    } 
                 }
                 catch (Exception ex) { Console.WriteLine(ex.Message); }
             }
         }
 
-        private void BtnAdd_Click_1(object sender, EventArgs e)
-        {
-            AddingUserForm auf = new AddingUserForm(usersGrid);
-            auf.ShowDialog();
-            auf.Dispose();
-        }
-
         private void UsersGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1)
+            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1 && !editUserFlag)
             {
                 row = e.RowIndex;
                 oldUsername = usersGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                 oldPassword = Decrypt(usersGrid.Rows[e.RowIndex].Cells[3].Value.ToString());
                 usersGrid.Rows[e.RowIndex].Cells[3].Value = oldPassword;
                 usersGrid.BeginEdit(true);
-                editFlag = true;
+                editUserFlag = true;
             }
         }
 
@@ -155,13 +149,10 @@ namespace CommandGenerator
         {
             string newUsername = usersGrid.Rows[row].Cells[2].Value.ToString();
             string newPassword = usersGrid.Rows[row].Cells[3].Value.ToString();
-            // MessageBox.Show("new username " + newUsername + " oldUsername " + oldUsername);
-            // MessageBox.Show("new password " + newPassword + " oldpassword " + oldPassword);
-            if (editFlag && (!CheckUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
+            if (editUserFlag && (!CheckUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
                     (MessageBox.Show("Are you sure you want to save edits?",
                         "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
-                editFlag = false;
                 newPassword = Encrypt(newPassword);
                 SQLiteConnection myconnection = new SQLiteConnection(path);
                 myconnection.Open();
@@ -172,6 +163,7 @@ namespace CommandGenerator
                 cmd.ExecuteNonQuery();
                 myconnection.Close();
             }
+            editUserFlag = false;
             RefreshUsers();
         }
 
@@ -196,13 +188,6 @@ namespace CommandGenerator
                 }
             }
             return clearText;
-        }
-
-        private void CircularButton1_Click(object sender, EventArgs e)
-        {
-            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
-            anf.ShowDialog();
-            anf.Dispose();
         }
 
         public static string Decrypt(string cipherText)
@@ -236,7 +221,7 @@ namespace CommandGenerator
                 try
                 {
                     string str = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-                    if (MessageBox.Show("Are you sure you want to delete user '" + str + "' ?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Are you sure you want to delete network element '" + str + "' ?", "Confirm Deletion", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         SQLiteConnection myconnection = new SQLiteConnection(path);
                         myconnection.Open();
@@ -267,21 +252,29 @@ namespace CommandGenerator
             DataTable show = new DataTable();
             SQLiteDataAdapter adap = new SQLiteDataAdapter(q.ShowNetworks(), myconn);
             adap.Fill(show);
-            NetworkGrid.DataSource = show;
+            try
+            {
+                NetworkGrid.DataSource = show;
+            }
+            catch (Exception ex)
+            {
+                NetworkGrid.Rows[row].Cells[3].Value = oldname;
+                NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
+                Console.WriteLine(ex.Message);
+            }
             myconn.Close();
         }
 
         private void NetworkGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1)
+            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1 && !editNetworkFlag)
             {
                 row = e.RowIndex;
-                String oldIp = NetworkGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-                String oldusername = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
                 oldpass = Decrypt(NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
-                 oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-               NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
+                oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
                 NetworkGrid.BeginEdit(true);
+                editNetworkFlag = true;
             }
         }
 
@@ -292,7 +285,7 @@ namespace CommandGenerator
             string Password = NetworkGrid.Rows[row].Cells[4].Value.ToString();
             string Name = NetworkGrid.Rows[row].Cells[5].Value.ToString();
 
-            if (MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (!editNetworkFlag && MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 Password = Encrypt(Password);
                 SQLiteConnection myconnection = new SQLiteConnection(path);
@@ -306,6 +299,7 @@ namespace CommandGenerator
                 cmd.ExecuteNonQuery();
                 myconnection.Close();
             }
+            editNetworkFlag = false;
             ListingNetworks();
         }
 
@@ -358,6 +352,64 @@ namespace CommandGenerator
             commandsTabController.BrowzeButtonClicked(SheetsCB);
             if (commandsTabController.GetSheet(0) != null)
                 ExcuteBtn.Enabled = true;
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            AddingUserForm auf = new AddingUserForm(usersGrid);
+            auf.ShowDialog();
+            auf.Dispose();
+        }
+
+        private void btnAddNetwork_Click(object sender, EventArgs e)
+        {
+            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
+            anf.ShowDialog();
+            anf.Dispose();
+        }
+
+        private void cellPaint(string imageName, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //I supposed your button column is at index 0
+            if (e.ColumnIndex == 0)
+            {
+                e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+
+                var w = 16;
+                var h = 16;
+                var x = e.CellBounds.Left + (e.CellBounds.Width - w) / 2;
+                var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
+
+                string[] s = { "\\bin" };
+                string removeImage =
+                       Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\" + imageName + ".png";
+                string path =
+                    "Data Source=" + Path.GetFullPath(database);
+
+                Image myImage = Image.FromFile(removeImage);
+                e.Graphics.DrawImage(myImage, new Rectangle(x, y, w, h));
+                e.Handled = true;
+            }
+        }
+
+        private void usersGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            cellPaint("removeIcon", e);
+        }
+
+        private void CmdGrid_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            cellPaint("refreshIcon", e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddingNetworkForm anf = new AddingNetworkForm(NetworkGrid);
+            anf.ShowDialog();
+            anf.Dispose();
         }
 
         private void ClearBtn_Click(object sender, EventArgs e)

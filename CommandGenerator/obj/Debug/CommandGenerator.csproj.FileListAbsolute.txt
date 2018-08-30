@@ -111,7 +111,6 @@ D:\Visual Studio\bangar\CommandGenerator\CommandGenerator\obj\Debug\CommandGener
 D:\Visual Studio\bangar\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.exe
 D:\Visual Studio\bangar\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
 D:\Visual Studio\bangar\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.CommandGenerator.resources
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.CommandGenerator.resources
 C:\Users\ahmed safwat\Desktop\LAST VERSIONN\CommandGenerator-master\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 C:\Users\ahmed safwat\Desktop\LAST VERSIONN\CommandGenerator-master\CommandGenerator\obj\Debug\CommandGenerator.AddingNetworkForm.resources
@@ -190,3 +189,7 @@ D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\Co
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache

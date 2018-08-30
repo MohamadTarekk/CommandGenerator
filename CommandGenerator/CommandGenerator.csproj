@@ -101,9 +101,6 @@
     <Compile Include="AddingUserForm.Designer.cs">
       <DependentUpon>AddingUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CircularButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CommandsTabController.cs" />
     <Compile Include="DataBaseReference.cs" />
     <Compile Include="FileParser.cs" />

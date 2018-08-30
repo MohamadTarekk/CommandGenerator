@@ -171,11 +171,6 @@ namespace CommandGenerator
             exitPnlAddNetwork.ForeColor = Color.DimGray;
         }
 
-        internal class CircularButton : global::CommandGenerator.CircularButton
-        {
-
-        }
-
         private void Txt_Username_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)

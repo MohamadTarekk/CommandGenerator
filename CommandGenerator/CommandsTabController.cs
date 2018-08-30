@@ -24,7 +24,7 @@ namespace CommandGenerator
                 }
                 workbookProcessor.InitializeStatus();
             }
-            catch(Exception ex) { Console.WriteLine(ex.Message); }
+            catch(Exception ex) { Console.WriteLine(ex.StackTrace); }
         }
 
         public void ExcuteButtonPressed()
@@ -45,7 +45,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.Message);
+                FileParser.LogException(ex.StackTrace);
                 return null;
             }
         }

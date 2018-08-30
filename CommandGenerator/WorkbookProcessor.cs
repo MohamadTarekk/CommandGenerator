@@ -48,7 +48,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.Message);
+                FileParser.LogException(ex.StackTrace);
                 return null;
             }
         }
@@ -107,7 +107,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.Message);
+                FileParser.LogException(ex.StackTrace);
             }
         }
 

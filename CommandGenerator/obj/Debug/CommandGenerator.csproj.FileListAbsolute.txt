@@ -183,6 +183,7 @@ D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Ex
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Renci.SshNet.xml
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.xml
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\System.Data.SQLite.dll.config
+D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingNetworkForm.resources
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.AddingUserForm.resources
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.CommandGenerator.resources

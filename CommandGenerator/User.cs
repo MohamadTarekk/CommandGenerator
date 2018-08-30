@@ -90,7 +90,7 @@ namespace CommandGenerator
             {
                 usersGrid.Rows[row].Cells[2].Value = oldUsername;
                 usersGrid.Rows[row].Cells[3].Value =Encrypt(oldPassword);
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
             myconn.Close();
         }
@@ -113,7 +113,7 @@ namespace CommandGenerator
                         RefreshUsers();
                     } 
                 }
-                catch (Exception ex) { Console.WriteLine(ex.Message); }
+                catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
             }
         }
 
@@ -240,7 +240,7 @@ namespace CommandGenerator
                 }
                 catch (Exception ex)
                 {
-                    FileParser.LogException(ex.Message);
+                    FileParser.LogException(ex.StackTrace);
                 }
             }
         }
@@ -267,7 +267,7 @@ namespace CommandGenerator
             {
                 NetworkGrid.Rows[row].Cells[3].Value = oldname;
                 NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
             myconn.Close();
         }
@@ -341,6 +341,9 @@ namespace CommandGenerator
             CmdGrid.BackgroundColor = Color.AliceBlue;
             SetGridColors(3, "Status", "Available", "Doesn't Exist");
             SetGridColors(4, "Excution", "true", "false");
+            CmdGrid.Refresh();
+            CmdGrid.RefreshEdit();
+            CmdGrid.Update();
         }
 
         public void SetGridColors(int ColumnIndex, string ColumnName, string GreenState, string RedState)
@@ -371,8 +374,17 @@ namespace CommandGenerator
         private void BrowzeBtn_Click(object sender, EventArgs e)
         {
             commandsTabController.BrowzeButtonClicked(SheetsCB);
-            if (commandsTabController.GetSheet(0) != null)
+            try
+            {
+                commandsTabController.GetSheet(0);
                 ExcuteBtn.Enabled = true;
+                RefreshCmdGrid();
+            }
+            catch(Exception ex)
+            {
+                FileParser.LogException(ex.StackTrace);
+            }
+                
         }
 
         private void ExcuteBtn_Click(object sender, EventArgs e)

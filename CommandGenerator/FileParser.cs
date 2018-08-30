@@ -6,21 +6,21 @@ namespace CommandGenerator
 {
     class FileParser
     {
-        public static int counter = 0;
-        public static int Ncounter = 0;
+        private static int counter = 0;
+        private static int Ncounter = 0;
 
-        public static string[] s = { "\\bin" };
-        public static string LogsDirectory =
+        private static string[] s = { "\\bin" };
+        private static string LogsDirectory =
                        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Logs";
-        public static string LogsPath = Path.GetFullPath(LogsDirectory);
+        private static string LogsPath = Path.GetFullPath(LogsDirectory);
 
-        public static string OutputDirectory =
+        private static string OutputDirectory =
                        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Result";
-        public static string OutputPath = Path.GetFullPath(OutputDirectory);
+        private static string OutputPath = Path.GetFullPath(OutputDirectory);
 
 
 
-        public static string SavingPath = "";
+        private static string SavingPath = "";
 
         public static void LogException(string error)
         {
@@ -38,8 +38,8 @@ namespace CommandGenerator
             }
             catch (Exception ex)
             {
-                //FileParser.LogException(ex.Message);
-                Console.WriteLine(ex.Message);
+                //FileParser.LogException(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
             }
         }
 
@@ -67,7 +67,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.Message);
+                FileParser.LogException(ex.StackTrace);
             }
         }
 
@@ -100,7 +100,7 @@ namespace CommandGenerator
             }
             catch (IOException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }
             /*using (var zip = new Ionic.Zip.ZipFile())
             {

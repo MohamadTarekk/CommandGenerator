@@ -20,8 +20,10 @@ namespace CommandGenerator
         public static int row;
         private bool editUserFlag;
         private bool editNetworkFlag;
+        
+        private bool Encrypted = true;
         public static string oldUsername, oldPassword;
-        public static string oldname,oldpass;
+        public static string oldname,oldpass,olduser;
 
         Queries q = new Queries();
         public static string[] s = { "\\bin" };
@@ -265,7 +267,7 @@ namespace CommandGenerator
             }
             catch (Exception ex)
             {
-                NetworkGrid.Rows[row].Cells[3].Value = oldname;
+                NetworkGrid.Rows[row].Cells[3].Value = olduser;
                 NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
                 Console.WriteLine(ex.StackTrace);
             }
@@ -274,14 +276,30 @@ namespace CommandGenerator
 
         private void NetworkGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1 && !editNetworkFlag)
+            
+            if (e.ColumnIndex != 0 && e.ColumnIndex != 1 && e.ColumnIndex != -1 && e.RowIndex != -1 && !editNetworkFlag )
             {
+
                 row = e.RowIndex;
-                oldpass = Decrypt(NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
+                if(Encrypted==true)
+                {
+                    oldpass = Decrypt(NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
+                    Encrypted = false;
+                   
+                }
+                else
+                {
+                    oldpass = NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                  
+                }
+                 olduser = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
                 oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                 NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
                 NetworkGrid.BeginEdit(true);
                 editNetworkFlag = true;
+                Console.WriteLine(editNetworkFlag);
+                
+                
             }
         }
 
@@ -291,9 +309,12 @@ namespace CommandGenerator
             string Username = NetworkGrid.Rows[row].Cells[3].Value.ToString();
             string Password = NetworkGrid.Rows[row].Cells[4].Value.ToString();
             string Name = NetworkGrid.Rows[row].Cells[5].Value.ToString();
-
-            if (!editNetworkFlag && MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            
+            if(editNetworkFlag == true)
             {
+            if ( MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                    Console.WriteLine(Username);
                 Password = Encrypt(Password);
                 SQLiteConnection myconnection = new SQLiteConnection(path);
                 myconnection.Open();
@@ -305,9 +326,23 @@ namespace CommandGenerator
                 cmd.Parameters.Add(new SQLiteParameter("@oldname",oldname));
                 cmd.ExecuteNonQuery();
                 myconnection.Close();
+                ListingNetworks();
+                editNetworkFlag = false;
+                   Encrypted = true;
             }
-            editNetworkFlag = false;
-            ListingNetworks();
+            else
+                {
+                    
+                    editNetworkFlag = false;
+                    Console.WriteLine(editNetworkFlag);
+                }
+            }
+            else
+            {
+                ListingNetworks();
+            }
+
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)

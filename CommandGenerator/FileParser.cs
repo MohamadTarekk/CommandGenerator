@@ -28,12 +28,12 @@ namespace CommandGenerator
             {
                 if (!Directory.Exists(LogsPath))
                     Directory.CreateDirectory(LogsPath);
-                string Filep = "Error_" + counter + ".txt";
+                string Filep = "ErrorsLog.txt";
                 string lpath = LogsPath + "\\" + Filep;
                 StreamWriter w = File.AppendText(Filep);
                 w.Dispose();
                 string file = Path.Combine(LogsPath, Filep);
-                File.WriteAllText(file, error);
+                File.WriteAllText(file, error + "\n");
                 counter++;
             }
             catch (Exception ex)

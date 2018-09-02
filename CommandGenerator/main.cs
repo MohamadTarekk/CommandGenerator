@@ -11,6 +11,7 @@ namespace CommandGenerator
     public partial class CommandGenerator : Form
     {
         private bool usernameEntered;
+        private bool passwordEntered;
 
         public CommandGenerator()
         {
@@ -142,9 +143,10 @@ namespace CommandGenerator
         private void Txt_Password_Enter(object sender, EventArgs e)
         {
             pnlTbPassword.BackColor = Color.FromArgb(26, 73, 148);
-            if (txt_Password.Text == "Password" && !txt_Password.UseSystemPasswordChar)
+            if (txt_Password.Text == "Password" && !passwordEntered)
             {
                 txt_Password.Text = "";
+                passwordEntered = true;
                 txt_Password.UseSystemPasswordChar = true;
                 txt_Password.ForeColor = Color.FromArgb(26, 73, 148);
             }
@@ -155,6 +157,7 @@ namespace CommandGenerator
             pnlTbPassword.BackColor = Color.Transparent;
             if (txt_Password.Text == "")
             {
+                passwordEntered = false;
                 txt_Password.UseSystemPasswordChar = false;
                 txt_Password.Text = "Password";
                 txt_Password.ForeColor = Color.CornflowerBlue;

@@ -20,10 +20,11 @@ namespace CommandGenerator
         public static int row;
         private bool editUserFlag;
         private bool editNetworkFlag;
+        private bool cellLeft;
         
         private bool Encrypted = true;
         public static string oldUsername, oldPassword;
-        public static string oldname,oldpass,olduser;
+        public static string oldip, oldname,oldpass,olduser;
 
         Queries q = new Queries();
         public static string[] s = { "\\bin" };
@@ -90,6 +91,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
+                // Ignore edits
                 usersGrid.Rows[row].Cells[2].Value = oldUsername;
                 usersGrid.Rows[row].Cells[3].Value =Encrypt(oldPassword);
                 Console.WriteLine(ex.StackTrace);
@@ -151,7 +153,7 @@ namespace CommandGenerator
         {
             string newUsername = usersGrid.Rows[row].Cells[2].Value.ToString();
             string newPassword = usersGrid.Rows[row].Cells[3].Value.ToString();
-            if (editUserFlag && (!CheckUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
+            if (!cellLeft && editUserFlag && (!CheckUsername(newUsername) || newUsername != oldUsername || newPassword != oldPassword) &&
                     (MessageBox.Show("Are you sure you want to save edits?",
                         "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes))
             {
@@ -267,8 +269,10 @@ namespace CommandGenerator
             }
             catch (Exception ex)
             {
+                NetworkGrid.Rows[row].Cells[2].Value = oldip;
                 NetworkGrid.Rows[row].Cells[3].Value = olduser;
                 NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
+                NetworkGrid.Rows[row].Cells[5].Value = oldname;
                 Console.WriteLine(ex.StackTrace);
             }
             myconn.Close();
@@ -292,7 +296,8 @@ namespace CommandGenerator
                     oldpass = NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
                   
                 }
-                 olduser = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                oldip = NetworkGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+                olduser = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
                 oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                 NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
                 NetworkGrid.BeginEdit(true);
@@ -310,30 +315,27 @@ namespace CommandGenerator
             string Password = NetworkGrid.Rows[row].Cells[4].Value.ToString();
             string Name = NetworkGrid.Rows[row].Cells[5].Value.ToString();
             
-            if(editNetworkFlag == true)
+            if(editNetworkFlag && !cellLeft)
             {
-            if ( MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                    Console.WriteLine(Username);
-                Password = Encrypt(Password);
-                SQLiteConnection myconnection = new SQLiteConnection(path);
-                myconnection.Open();
-                SQLiteCommand cmd = new SQLiteCommand("update Network set Ip = @Ip , username=@username, password= @password , Name = @Name where Name=@oldname  ;", myconnection);
-                cmd.Parameters.Add(new SQLiteParameter("@username", Username));
-                cmd.Parameters.Add(new SQLiteParameter("@password", Password));
-                cmd.Parameters.Add(new SQLiteParameter("@Ip", Ip));
-                cmd.Parameters.Add(new SQLiteParameter("@Name", Name));
-                cmd.Parameters.Add(new SQLiteParameter("@oldname",oldname));
-                cmd.ExecuteNonQuery();
-                myconnection.Close();
-                ListingNetworks();
-                editNetworkFlag = false;
-                   Encrypted = true;
-            }
-            else
+                if ( MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    
-                    editNetworkFlag = false;
+                        Console.WriteLine(Username);
+                    Password = Encrypt(Password);
+                    SQLiteConnection myconnection = new SQLiteConnection(path);
+                    myconnection.Open();
+                    SQLiteCommand cmd = new SQLiteCommand("update Network set Ip = @Ip , username=@username, password= @password , Name = @Name where Name=@oldname  ;", myconnection);
+                    cmd.Parameters.Add(new SQLiteParameter("@username", Username));
+                    cmd.Parameters.Add(new SQLiteParameter("@password", Password));
+                    cmd.Parameters.Add(new SQLiteParameter("@Ip", Ip));
+                    cmd.Parameters.Add(new SQLiteParameter("@Name", Name));
+                    cmd.Parameters.Add(new SQLiteParameter("@oldname",oldname));
+                    cmd.ExecuteNonQuery();
+                    myconnection.Close();
+                    ListingNetworks();
+                }
+                else
+                {
+                    ListingNetworks();
                     Console.WriteLine(editNetworkFlag);
                 }
             }
@@ -341,8 +343,8 @@ namespace CommandGenerator
             {
                 ListingNetworks();
             }
-
-            
+            editNetworkFlag = false;
+            Encrypted = true;
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -372,8 +374,8 @@ namespace CommandGenerator
         {
             CmdGrid.DataSource = commandsTabController.GetSheet(SheetsCB.SelectedIndex);
             CmdGrid.DefaultCellStyle.ForeColor = Color.Black;
-            CmdGrid.DefaultCellStyle.BackColor = Color.AliceBlue;
-            CmdGrid.BackgroundColor = Color.AliceBlue;
+            //CmdGrid.DefaultCellStyle.BackColor = Color.AliceBlue;
+            //CmdGrid.BackgroundColor = Color.AliceBlue;
             SetGridColors(3, "Status", "Available", "Doesn't Exist");
             SetGridColors(4, "Excution", "true", "false");
             CmdGrid.Refresh();
@@ -450,6 +452,28 @@ namespace CommandGenerator
                 FileParser.SaveResult("asd", "IP", "Apply this command", "This is the output");
                 FileParser.CreateZip();
             }*/
+        }
+
+        private void usersGrid_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (editUserFlag)
+                cellLeft = true;
+            else
+                cellLeft = false;
+        }
+
+        private void NetworkGrid_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (editNetworkFlag)
+            {
+                NetworkGrid.Rows[row].Cells[2].Value = oldip;
+                NetworkGrid.Rows[row].Cells[3].Value = olduser;
+                NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
+                NetworkGrid.Rows[row].Cells[5].Value = oldname;
+                cellLeft = true;
+            }
+            else
+                cellLeft = false;
         }
 
         //////////--------------------COMMON FUNCTIONS--------------------\\\\\\\\\\

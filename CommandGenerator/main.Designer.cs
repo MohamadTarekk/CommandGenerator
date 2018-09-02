@@ -94,7 +94,7 @@
             this.exitPnlAddNetwork.Margin = new System.Windows.Forms.Padding(1);
             this.exitPnlAddNetwork.Name = "exitPnlAddNetwork";
             this.exitPnlAddNetwork.Size = new System.Drawing.Size(31, 37);
-            this.exitPnlAddNetwork.TabIndex = 0;
+            this.exitPnlAddNetwork.TabIndex = 4;
             this.exitPnlAddNetwork.Text = "x";
             this.exitPnlAddNetwork.Click += new System.EventHandler(this.ExitPnlAddNetwork_Click);
             this.exitPnlAddNetwork.MouseLeave += new System.EventHandler(this.ExitPnlAddNetwork_MouseLeave);
@@ -144,7 +144,7 @@
             this.txt_Password.Margin = new System.Windows.Forms.Padding(0);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.Size = new System.Drawing.Size(325, 32);
-            this.txt_Password.TabIndex = 4;
+            this.txt_Password.TabIndex = 2;
             this.txt_Password.Text = "Password";
             this.txt_Password.Enter += new System.EventHandler(this.Txt_Password_Enter);
             this.txt_Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Username_KeyDown);
@@ -159,7 +159,7 @@
             this.Log.Location = new System.Drawing.Point(22, 479);
             this.Log.Name = "Log";
             this.Log.Size = new System.Drawing.Size(363, 34);
-            this.Log.TabIndex = 5;
+            this.Log.TabIndex = 3;
             this.Log.Text = "Sign In";
             this.Log.UseVisualStyleBackColor = false;
             this.Log.Click += new System.EventHandler(this.Log_Click);
@@ -183,7 +183,7 @@
             this.txt_Username.Margin = new System.Windows.Forms.Padding(0);
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.Size = new System.Drawing.Size(325, 32);
-            this.txt_Username.TabIndex = 3;
+            this.txt_Username.TabIndex = 1;
             this.txt_Username.Text = "Username";
             this.txt_Username.Enter += new System.EventHandler(this.Txt_Username_Enter);
             this.txt_Username.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_Username_KeyDown);

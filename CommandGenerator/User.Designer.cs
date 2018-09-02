@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(User));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Commands = new System.Windows.Forms.TabPage();
             this.pnlCommands = new System.Windows.Forms.Panel();
@@ -41,6 +41,7 @@
             this.ExcuteBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CmdGrid = new System.Windows.Forms.DataGridView();
+            this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.BrowzeBtn = new System.Windows.Forms.Button();
             this.SheetsCB = new System.Windows.Forms.ComboBox();
             this.nokia = new System.Windows.Forms.PictureBox();
@@ -60,7 +61,6 @@
             this.NetworkGrid = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.Commands.SuspendLayout();
             this.pnlCommands.SuspendLayout();
@@ -219,6 +219,13 @@
             this.CmdGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CmdGrid_CellContentClick);
             this.CmdGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.CmdGrid_CellPainting);
             // 
+            // Refresh
+            // 
+            this.Refresh.FillWeight = 18F;
+            this.Refresh.HeaderText = "Refresh";
+            this.Refresh.Name = "Refresh";
+            this.Refresh.ReadOnly = true;
+            // 
             // BrowzeBtn
             // 
             this.BrowzeBtn.BackColor = System.Drawing.Color.SteelBlue;
@@ -333,8 +340,8 @@
             this.usersGrid.AllowUserToAddRows = false;
             this.usersGrid.AllowUserToDeleteRows = false;
             this.usersGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.usersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.usersGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.usersGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.usersGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
             this.usersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -350,6 +357,7 @@
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellContentClick);
             this.usersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellDoubleClick);
             this.usersGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellEndEdit);
+            this.usersGrid.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersGrid_CellLeave);
             this.usersGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.UsersGrid_CellPainting);
             // 
             // Remove
@@ -427,8 +435,8 @@
             this.NetworkGrid.AllowUserToAddRows = false;
             this.NetworkGrid.AllowUserToDeleteRows = false;
             this.NetworkGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.NetworkGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.NetworkGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.NetworkGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.NetworkGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(73)))), ((int)(((byte)(148)))));
             this.NetworkGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -444,6 +452,7 @@
             this.NetworkGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentClick);
             this.NetworkGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellContentDoubleClick);
             this.NetworkGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellEndEdit);
+            this.NetworkGrid.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.NetworkGrid_CellLeave);
             this.NetworkGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.UsersGrid_CellPainting);
             // 
             // dataGridViewButtonColumn1
@@ -465,13 +474,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
-            // 
-            // Refresh
-            // 
-            this.Refresh.FillWeight = 18F;
-            this.Refresh.HeaderText = "Refresh";
-            this.Refresh.Name = "Refresh";
-            this.Refresh.ReadOnly = true;
             // 
             // User
             // 

@@ -165,7 +165,6 @@ C:\Users\LENOVO\Desktop\CommandGenerator-master\CommandGenerator\obj\Debug\Comma
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.dll
 C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\DotNetZip.xml
-C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\Data\Nokia.db
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe.config
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\CommandGenerator.exe
@@ -226,3 +225,6 @@ C:\Users\ahmed safwat\Documents\GitHub\CommandGenerator\CommandGenerator\obj\Deb
 C:\Users\ahmed safwat\Documents\GitHub\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.pdb
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\log4net.dll
 D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\bin\Debug\log4net.xml
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\log4net.dll
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\bin\Debug\log4net.xml
+C:\Users\Mahmoud\Desktop\Clone\CommandGenerator\CommandGenerator\obj\Debug\CommandGenerator.csprojAssemblyReference.cache

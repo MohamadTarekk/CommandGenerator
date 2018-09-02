@@ -6,23 +6,22 @@ namespace CommandGenerator
 {
     class FileParser
     {
-        private static int counter = 0;
         private static int Ncounter = 0;
 
-        private static string[] s = { "\\bin" };
-        private static string LogsDirectory =
+        private static readonly string[] s = { "\\bin" };
+        private static readonly string LogsDirectory =
                        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Logs";
-        private static string LogsPath = Path.GetFullPath(LogsDirectory);
+        private static readonly string LogsPath = Path.GetFullPath(LogsDirectory);
 
-        private static string OutputDirectory =
+        private static readonly string OutputDirectory =
                        Application.StartupPath.Split(s, StringSplitOptions.None)[0] + "\\Data\\Result";
-        private static string OutputPath = Path.GetFullPath(OutputDirectory);
+        private static readonly string OutputPath = Path.GetFullPath(OutputDirectory);
 
 
 
         private static string SavingPath = "";
 
-        public static void LogException(string error)
+        public static void LogException(Exception ex)
         {
             try
             {
@@ -30,16 +29,15 @@ namespace CommandGenerator
                     Directory.CreateDirectory(LogsPath);
                 string Filep = "ErrorsLog.txt";
                 string lpath = LogsPath + "\\" + Filep;
-                StreamWriter w = File.AppendText(Filep);
+                StreamWriter w = File.AppendText(lpath);
                 w.Dispose();
                 string file = Path.Combine(LogsPath, Filep);
-                File.WriteAllText(file, error + "\n");
-                counter++;
+                File.AppendAllText(file, ex.Message + Environment.NewLine + ex.StackTrace + Environment.NewLine);
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 //FileParser.LogException(ex.StackTrace);
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(exception.StackTrace);
             }
         }
 
@@ -49,12 +47,10 @@ namespace CommandGenerator
             {
                 string path = Path.GetFullPath(OutputPath);
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-                path += "\\" + name;
+                path += ("\\" + name);
+                path = Path.GetFullPath(path);
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 string Filep = "command_" + Ncounter + ".txt";
-                string lpath = path + "\\" + Filep;
-                StreamWriter ws = File.AppendText(Filep);
-                ws.Dispose();
                 string file = Path.Combine(path, Filep);
                 string text = name + Environment.NewLine + IP + Environment.NewLine + commandText + Environment.NewLine + result + Environment.NewLine + Environment.NewLine;
                 File.WriteAllText(file, text);
@@ -67,7 +63,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.StackTrace);
+                FileParser.LogException(ex);
             }
         }
 
@@ -76,8 +72,8 @@ namespace CommandGenerator
             if (!Directory.Exists(OutputPath))
                 Directory.CreateDirectory(OutputPath);
             string Filep = "AllCommands.txt";
-            string lpath = LogsPath + "\\" + Filep;
-            StreamWriter w = File.AppendText(Filep);
+            string lpath = OutputPath + "\\" + Filep;
+            StreamWriter w = File.AppendText(lpath);
             w.Dispose();
             string file = Path.Combine(OutputPath, Filep);
         }
@@ -100,7 +96,7 @@ namespace CommandGenerator
             }
             catch (IOException ex)
             {
-                MessageBox.Show(ex.StackTrace);
+                FileParser.LogException(ex);
             }
             /*using (var zip = new Ionic.Zip.ZipFile())
             {

@@ -8,7 +8,7 @@ namespace CommandGenerator
 {
     class WorkbookProcessor
     {
-        private DataSet result;
+        private DataSet result = new DataSet();
         private List<string> networkElements = new List<string>();
         private List<int> networkElementsStatus = new List<int>();
         private DataBaseReference dataBaseReference = new DataBaseReference();
@@ -40,29 +40,51 @@ namespace CommandGenerator
             }
         }
 
+        public bool HasSheets()
+        {
+            if (result.Tables.Count == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public DataTableCollection GetSheets()
         {
+            if(!HasSheets())
+            {
+                return null;
+            }
+            return result.Tables;
+            /*
             try
             {
                 return result.Tables;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                FileParser.LogException(ex.StackTrace);
+                FileParser.LogException(ex);
                 return null;
             }
+            */
         }
-        
+
         private void CountNetworkElements()
         {
             // linq
             foreach (DataTable dt in result.Tables)
             {
-                foreach (DataRow dr in dt.Rows)
+                if (dt.Rows.Count != 0)
                 {
-                    if (!networkElements.Contains(dr[0].ToString()))
+                    foreach (DataRow dr in dt.Rows)
                     {
-                        networkElements.Add(dr[0].ToString());
+                        if (!string.IsNullOrEmpty(dr[0].ToString()))
+                        {
+                            if (!networkElements.Contains(dr[0].ToString()))
+                            {
+                                networkElements.Add(dr[0].ToString());
+                            }
+                        }
                     }
                 }
             }
@@ -107,7 +129,7 @@ namespace CommandGenerator
             }
             catch(Exception ex)
             {
-                FileParser.LogException(ex.StackTrace);
+                FileParser.LogException(ex);
             }
         }
 
@@ -133,9 +155,9 @@ namespace CommandGenerator
 
         public void Reset()
         {
-            result = null;
-            networkElements = null;
-            networkElementsStatus = null;
+            result = new DataSet();
+            networkElements = new List<string>();
+            networkElementsStatus = new List<int>();
         }
     }
 }

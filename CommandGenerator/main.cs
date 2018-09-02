@@ -61,9 +61,10 @@ namespace CommandGenerator
                 else
                     return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("PROBLEM RETRIEVING DATA PLEASE TRY AGAIN");
+                FileParser.LogException(ex);
             }
 
 

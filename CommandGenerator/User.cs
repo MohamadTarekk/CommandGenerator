@@ -94,7 +94,7 @@ namespace CommandGenerator
                 // Ignore edits
                 usersGrid.Rows[row].Cells[2].Value = oldUsername;
                 usersGrid.Rows[row].Cells[3].Value =Encrypt(oldPassword);
-                Console.WriteLine(ex.StackTrace);
+                FileParser.LogException(ex);
             }
             myconn.Close();
         }
@@ -117,7 +117,10 @@ namespace CommandGenerator
                         RefreshUsers();
                     } 
                 }
-                catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
+                catch (Exception ex)
+                {
+                    FileParser.LogException(ex);
+                }
             }
         }
 
@@ -244,7 +247,7 @@ namespace CommandGenerator
                 }
                 catch (Exception ex)
                 {
-                    FileParser.LogException(ex.StackTrace);
+                    FileParser.LogException(ex);
                 }
             }
         }
@@ -255,8 +258,9 @@ namespace CommandGenerator
             {
                 myconn.Open();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                FileParser.LogException(ex);
                 MessageBox.Show("Check Network");
             }
             Queries q = new Queries();
@@ -273,7 +277,7 @@ namespace CommandGenerator
                 NetworkGrid.Rows[row].Cells[3].Value = olduser;
                 NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
                 NetworkGrid.Rows[row].Cells[5].Value = oldname;
-                Console.WriteLine(ex.StackTrace);
+                FileParser.LogException(ex);
             }
             myconn.Close();
         }
@@ -411,17 +415,11 @@ namespace CommandGenerator
         private void BrowzeBtn_Click(object sender, EventArgs e)
         {
             commandsTabController.BrowzeButtonClicked(SheetsCB);
-            try
+            if (commandsTabController.HasSheets())
             {
-                commandsTabController.GetSheet(0);
                 ExcuteBtn.Enabled = true;
                 RefreshCmdGrid();
             }
-            catch(Exception ex)
-            {
-                FileParser.LogException(ex.StackTrace);
-            }
-                
         }
 
         private void ExcuteBtn_Click(object sender, EventArgs e)
@@ -447,14 +445,13 @@ namespace CommandGenerator
                 FileParser.SaveResult("asd", "IP", "Apply this command", "This is the output");
                 FileParser.SaveResult("name", "IP", "Apply this command", "This is the output");
                 FileParser.SaveResult("why do this", "IP", "Apply this command", "This is the output");
-                FileParser.SaveResult("?????", "IP", "Apply this command", "This is the output");
                 FileParser.SaveResult("123", "IP", "Apply this command", "This is the output");
                 FileParser.SaveResult("asd", "IP", "Apply this command", "This is the output");
                 FileParser.CreateZip();
             }*/
         }
 
-        private void usersGrid_CellLeave(object sender, DataGridViewCellEventArgs e)
+        private void UsersGrid_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             if (editUserFlag)
                 cellLeft = true;

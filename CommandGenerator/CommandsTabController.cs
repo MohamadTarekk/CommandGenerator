@@ -14,17 +14,22 @@ namespace CommandGenerator
             {
                 using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Excel Workbook 97-2003|*.xls|Excel Workbook|*.xlsx", ValidateNames = true })
                 {
-                    if (ofd.ShowDialog() == DialogResult.OK)
+                    if (ofd.ShowDialog() == DialogResult.OK && !string.IsNullOrEmpty(ofd.FileName))
                     {
                         workbookProcessor.ReadWorkbook(ofd.FileName, ofd.FilterIndex);
                         sheetsCB.Items.Clear();
                         foreach (DataTable dt in workbookProcessor.GetSheets())
+                        {
                             sheetsCB.Items.Add(dt.TableName);
+                        }
+                        workbookProcessor.InitializeStatus();
                     }
                 }
-                workbookProcessor.InitializeStatus();
             }
-            catch(Exception ex) { Console.WriteLine(ex.StackTrace); }
+            catch(Exception ex)
+            {
+                FileParser.LogException(ex);
+            }
         }
 
         public void ExcuteButtonPressed()
@@ -37,17 +42,26 @@ namespace CommandGenerator
             }
         }
 
-        public DataTable GetSheet(int tableName)
+        public bool HasSheets()
         {
-            try
+            if (workbookProcessor.HasSheets())
             {
-                return workbookProcessor.GetSheets()[tableName];
+                return true;
             }
-            catch(Exception ex)
+            return false;
+        }
+
+        public DataTable GetSheet(int tableIndex)
+        {
+            if(tableIndex < 0)
             {
-                FileParser.LogException(ex.StackTrace);
                 return null;
             }
+            if (!workbookProcessor.HasSheets())
+            {
+                return null;
+            }
+            return workbookProcessor.GetSheets()[tableIndex];
         }
 
         public void RefreshConnection(string name)

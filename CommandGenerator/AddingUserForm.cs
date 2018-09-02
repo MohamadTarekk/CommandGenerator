@@ -95,7 +95,7 @@ namespace CommandGenerator
             {
                 usersGrid.Rows[User.row].Cells[2].Value = User.oldUsername;
                 usersGrid.Rows[User.row].Cells[3].Value = User.Encrypt(User.oldPassword);
-                Console.WriteLine(ex.StackTrace);
+                FileParser.LogException(ex);
             }
             myconn.Close();
         }

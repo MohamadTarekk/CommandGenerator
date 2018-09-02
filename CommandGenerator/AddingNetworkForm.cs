@@ -189,8 +189,9 @@ namespace CommandGenerator
                 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                FileParser.LogException(ex);
                 MessageBox.Show("Check Network");
             }
             Queries q = new Queries();
@@ -209,8 +210,9 @@ namespace CommandGenerator
             {
                 myconn.Open();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                FileParser.LogException(ex);
                 MessageBox.Show("Check Network");
             }
             Queries q = new Queries();

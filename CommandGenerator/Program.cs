@@ -16,24 +16,24 @@ namespace CommandGenerator
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            AppDomain currentDomain = default(AppDomain);
+            /*AppDomain currentDomain = default(AppDomain);
             currentDomain = AppDomain.CurrentDomain;
             // Handler for unhandled exceptions.
             currentDomain.UnhandledException += GlobalUnhandledExceptionHandler;
             // Handler for exceptions in threads behind forms.
             Application.ThreadException += GlobalThreadExceptionHandler;
- 
+            */
+
             //#comment handle any exception from application
             Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
 
             Application.Run(new CommandGenerator());
-            //Application.Run(new User());
         }
 
         private static void MyCommonExceptionHandlingMethod(object sender, ThreadExceptionEventArgs e)
         {
             //#comment use your logger
-            FileParser.LogException(e.Exception.StackTrace);
+            FileParser.LogException(e.Exception);
             throw new NotImplementedException();
         }
         private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e)

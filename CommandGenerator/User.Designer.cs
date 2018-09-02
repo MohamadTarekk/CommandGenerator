@@ -357,7 +357,7 @@
             this.usersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellContentClick);
             this.usersGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellDoubleClick);
             this.usersGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellEndEdit);
-            this.usersGrid.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.usersGrid_CellLeave);
+            this.usersGrid.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGrid_CellLeave);
             this.usersGrid.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.UsersGrid_CellPainting);
             // 
             // Remove
@@ -545,6 +545,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.DataGridViewButtonColumn Refresh;
+        private new System.Windows.Forms.DataGridViewButtonColumn Refresh;
     }
 }

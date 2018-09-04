@@ -32,7 +32,7 @@ namespace CommandGenerator
                 StreamWriter w = File.AppendText(lpath);
                 w.Dispose();
                 string file = Path.Combine(LogsPath, Filep);
-                File.AppendAllText(file, ex.Message + Environment.NewLine + ex.StackTrace + Environment.NewLine);
+                File.AppendAllText(file, ex.Message + Environment.NewLine + ex.StackTrace + Environment.NewLine + Environment.NewLine);
             }
             catch (Exception exception)
             {

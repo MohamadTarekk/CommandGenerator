@@ -376,11 +376,12 @@ namespace CommandGenerator
 
         public void RefreshCmdGrid()
         {
+            CmdGrid.DataSource = null;
             CmdGrid.DataSource = commandsTabController.GetSheet(SheetsCB.SelectedIndex);
             CmdGrid.DefaultCellStyle.ForeColor = Color.Black;
             //CmdGrid.DefaultCellStyle.BackColor = Color.AliceBlue;
             //CmdGrid.BackgroundColor = Color.AliceBlue;
-            SetGridColors(3, "Status", "Available", "Doesn't Exist");
+            SetGridColors(3, "Status", "Available", "Connection Error");
             SetGridColors(4, "Excution", "true", "false");
             CmdGrid.Refresh();
             CmdGrid.RefreshEdit();
@@ -393,9 +394,9 @@ namespace CommandGenerator
             {
                 for (int itr = 0; itr < CmdGrid.Rows.Count; itr++)
                 {
-                    if (CmdGrid.Rows[itr].Cells[ColumnIndex].ToString().Equals(GreenState))
+                    if (CmdGrid.Rows[itr].Cells[ColumnIndex].Value.ToString().Equals(GreenState))
                         CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.LawnGreen;
-                    else if (CmdGrid.Rows[itr].Cells[ColumnIndex].ToString().Equals(RedState))
+                    else if (CmdGrid.Rows[itr].Cells[ColumnIndex].Value.ToString().Equals(RedState))
                         CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.Red;
                     else
                         CmdGrid.Rows[itr].Cells[ColumnIndex].Style.BackColor = Color.Yellow;

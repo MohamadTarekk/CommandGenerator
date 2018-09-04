@@ -25,7 +25,6 @@ namespace CommandGenerator
                 FileParser.LogException(ex);
                 return false;
             }
-
         }
 
         public bool Excute(string name, string command)

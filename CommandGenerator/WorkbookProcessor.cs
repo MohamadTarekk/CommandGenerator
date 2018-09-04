@@ -78,12 +78,9 @@ namespace CommandGenerator
                 {
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (!string.IsNullOrEmpty(dr[0].ToString()))
+                        if (!networkElements.Contains(dr[0].ToString()))
                         {
-                            if (!networkElements.Contains(dr[0].ToString()))
-                            {
-                                networkElements.Add(dr[0].ToString());
-                            }
+                            networkElements.Add(dr[0].ToString());
                         }
                     }
                 }
@@ -120,12 +117,42 @@ namespace CommandGenerator
             /// 0 => exists in database but has a "Connection Error"
         }
 
+        public void RefreshStatus(string name, int statusIndex)
+        {
+            string status;
+            if (statusIndex == -1)
+                status = "Doesn't Exist";
+            else if (statusIndex == 0)
+                status = "Connection Error";
+            else
+                status = "Available";
+            foreach (DataTable dt in result.Tables)
+            {
+                if (dt.Rows.Count != 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (dr[0].Equals(name))
+                        {
+                            dr[2] = status;
+                        }
+                    }
+                }
+            }
+        }
+
         public void RefreshConnection(string name)
         {
             try
             {
                 int position = networkElements.IndexOf(name);
-                networkElementsStatus[position] = dataBaseReference.CheckConn1(name);
+                if (position >= 0)
+                {
+                    int status = dataBaseReference.CheckConn1(name);
+                    networkElementsStatus[position] = status;
+                    RefreshStatus(name, status);
+                }   
+                //networkElementsStatus[position] = dataBaseReference.CheckConn1(name);
             }
             catch(Exception ex)
             {

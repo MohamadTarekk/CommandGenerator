@@ -1,0 +1,36 @@
+No such host is known
+   at System.Net.Dns.GetAddrInfo(String name)
+   at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at Renci.SshNet.Session.SocketConnect(String host, Int32 port)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at CommandGenerator.SSHConnection.TestConnection(String SSHIp, String Username, String Password) in D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\SSHConnection.cs:line 17
+
+No such host is known
+   at System.Net.Dns.GetAddrInfo(String name)
+   at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at Renci.SshNet.Session.SocketConnect(String host, Int32 port)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at CommandGenerator.SSHConnection.TestConnection(String SSHIp, String Username, String Password) in D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\SSHConnection.cs:line 17
+
+No such host is known
+   at System.Net.Dns.GetAddrInfo(String name)
+   at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at Renci.SshNet.Session.SocketConnect(String host, Int32 port)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at CommandGenerator.SSHConnection.TestConnection(String SSHIp, String Username, String Password) in D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\SSHConnection.cs:line 17
+
+No such host is known
+   at System.Net.Dns.GetAddrInfo(String name)
+   at System.Net.Dns.InternalGetHostByName(String hostName, Boolean includeIPv6)
+   at System.Net.Dns.GetHostAddresses(String hostNameOrAddress)
+   at Renci.SshNet.Session.SocketConnect(String host, Int32 port)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at CommandGenerator.SSHConnection.TestConnection(String SSHIp, String Username, String Password) in D:\Visual Studio\CommandGenerator\CommandGenerator\CommandGenerator\SSHConnection.cs:line 17
+

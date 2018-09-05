@@ -27,7 +27,8 @@ namespace CommandGenerator
             //#comment handle any exception from application
             Application.ThreadException += new ThreadExceptionEventHandler(MyCommonExceptionHandlingMethod);
 
-            Application.Run(new CommandGenerator());
+            // Application.Run(new CommandGenerator());
+            Application.Run(new User());
         }
 
         private static void MyCommonExceptionHandlingMethod(object sender, ThreadExceptionEventArgs e)

@@ -94,7 +94,7 @@ namespace CommandGenerator
                 // Ignore edits
                 usersGrid.Rows[row].Cells[2].Value = oldUsername;
                 usersGrid.Rows[row].Cells[3].Value =Encrypt(oldPassword);
-                FileParser.LogException(ex);
+                // FileParser.LogException(ex);
             }
             myconn.Close();
         }
@@ -277,7 +277,7 @@ namespace CommandGenerator
                 NetworkGrid.Rows[row].Cells[3].Value = olduser;
                 NetworkGrid.Rows[row].Cells[4].Value = Encrypt(oldpass);
                 NetworkGrid.Rows[row].Cells[5].Value = oldname;
-                FileParser.LogException(ex);
+                // FileParser.LogException(ex);
             }
             myconn.Close();
         }
@@ -302,6 +302,7 @@ namespace CommandGenerator
                 }
                 oldip = NetworkGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
                 olduser = NetworkGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                oldPassword = Decrypt(NetworkGrid.Rows[e.RowIndex].Cells[4].Value.ToString());
                 oldname = NetworkGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
                 NetworkGrid.Rows[e.RowIndex].Cells[4].Value = oldpass;
                 NetworkGrid.BeginEdit(true);
@@ -318,12 +319,13 @@ namespace CommandGenerator
             string Username = NetworkGrid.Rows[row].Cells[3].Value.ToString();
             string Password = NetworkGrid.Rows[row].Cells[4].Value.ToString();
             string Name = NetworkGrid.Rows[row].Cells[5].Value.ToString();
-            
-            if(editNetworkFlag && !cellLeft)
+            bool edit = (Ip != oldip || Username != olduser || Password != oldPassword || Name != oldname);
+
+            if(editNetworkFlag && !cellLeft && edit)
             {
                 if ( MessageBox.Show("Are you sure you want to save edits?", "Confirm Edit", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                        Console.WriteLine(Username);
+                    Console.WriteLine(Username);
                     Password = Encrypt(Password);
                     SQLiteConnection myconnection = new SQLiteConnection(path);
                     myconnection.Open();

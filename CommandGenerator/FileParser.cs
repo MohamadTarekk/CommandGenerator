@@ -23,6 +23,8 @@ namespace CommandGenerator
 
         public static void LogException(Exception ex)
         {
+            if (ex.Message.Equals("No such host is known"))
+                return;
             try
             {
                 if (!Directory.Exists(LogsPath))
